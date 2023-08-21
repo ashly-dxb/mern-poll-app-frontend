@@ -1,5 +1,3 @@
-const baseURL = sessionStorage.getItem("apiPathURL");
-
+// const baseURL = sessionStorage.getItem("apiPathURL");
+const baseURL = process.env.REACT_APP_NODE_SERVER_URL;
 export default baseURL;
-
-// sessionStorage.setItem("apiPathURL", "http://localhost:8080/api");
