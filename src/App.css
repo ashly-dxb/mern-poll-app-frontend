@@ -1,0 +1,131 @@
+.App {
+  text-align: center;
+}
+
+
+
+* {
+  font-family: Verdana, 'Roboto';
+  font-size: 14px;
+  /* font-stretch: expanded; */
+}
+
+
+/* To override the bootstrap input field - focus border style */
+.form-control:focus {
+  /* border-color: #28a745; */
+  /* box-shadow: 0 0 0 0.3rem rgba(9, 230, 60, 0.25);
+  outline: 2 none; */
+
+  /* box-shadow: none !important; */
+  /* border-color: none !important; */
+   /* #0d6efd !important; */
+
+  border-color: #0d6efd;
+  outline: 0 none;
+  box-shadow: none;
+  
+}
+/* To override the bootstrap input field - focus border style */
+
+/* Poll list table */
+.rowStriped:nth-child(odd) { background-color: rgb(191, 221, 231); }
+.rowStriped:nth-child(even) { background-color: rgb(164, 224, 164); }
+
+
+
+.snackbarSuccess {
+  background-color: "lightgreen";
+  color: "white";
+}
+
+.snackbarError {
+  background-color: "red";
+  color: "white";
+}
+
+.snackbarInfo {
+  background-color: "lightblue";
+  color: "white";
+}
+
+
+
+
+.spinner {
+  /* fast rotation */
+  /* animation: spin infinite 1.2s steps(8); */
+  /* slow rotation */
+  animation: spin infinite 6s linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.main-header, .navbar {
+  background-color: rgb(179, 153, 153);
+  color: rgb(71, 55, 165) !important;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+
+/* Adjusting footer to bottom */
+html, body {
+  min-height: 100vh;
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  /* min-height: calc(100% - 230px); */
+  /* display: block; */
+  /* flex-direction: column; */
+  background-color: rgb(200, 213, 221);
+  margin-bottom: auto;
+  overflow-y: auto;
+
+  /* min-height: 90vh; */
+  /* display: flex; */
+  /* flex-direction:column; */
+  /* justify-content:space-between; */
+}
+
+.main-footer {  
+
+  position: fixed;
+  display: block;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+
+  color: hsl(210,8%,75%);
+  background-color: hsl(210,8%,15%);
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+.nav-link {
+  color: white !important;
+  letter-spacing: 1pt;
+}
+
+.nav-link:hover {
+  color: rgb(191, 191, 218) !important;
+  letter-spacing: 1pt;
+}
+
+.navbar-nav > .nav-item > .active{
+  color: rgb(138, 138, 187) !important;
+  font-weight: bold;
+  letter-spacing: 1pt;
+}
+
