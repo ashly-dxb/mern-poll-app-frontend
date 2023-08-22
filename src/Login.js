@@ -5,6 +5,9 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeContext } from "./ThemeContext";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner, faRefresh } from "@fortawesome/free-solid-svg-icons";
+
 function Login() {
   sessionStorage.setItem("apiPathURL", "http://localhost:8080/api");
 
@@ -14,6 +17,8 @@ function Login() {
   const [email, setEmail] = useState("ashlythomas@gmail.com");
   const [password, setPassword] = useState();
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const errorDiv = error ? (
@@ -44,7 +49,12 @@ function Login() {
 
   const handleLoginClick = (e) => {
     e.preventDefault();
+
+    // e.currentTarget.disabled = true;
+    // console.log(e.currentTarget, e.currentTarget.disabled);
+
     setError(null);
+    setIsLoading(true);
 
     axios
       .post(baseURL + "/users/login", {
@@ -64,7 +74,10 @@ function Login() {
           console.log("Login failed...");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -105,8 +118,23 @@ function Login() {
 
           <div className="form-group mb-3">{errorDiv}</div>
 
-          <button type="submit" className="btn btn-primary w-100 rounded-0">
-            Login
+          <button
+            type="submit"
+            className="btn btn-primary w-100 h-50 rounded-0"
+          >
+            {isLoading ? (
+              <>
+                <FontAwesomeIcon
+                  icon={isLoading ? faSpinner : faRefresh}
+                  className="fa-1x spinner"
+                  alt="Loading"
+                  title="Loading"
+                />
+                &nbsp; Loading ...
+              </>
+            ) : (
+              "Login"
+            )}
           </button>
 
           <p></p>

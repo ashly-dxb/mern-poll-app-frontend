@@ -14,10 +14,8 @@ import {
   faPencilAlt,
   faBook,
   faUser,
-  faList,
   faSpinner,
   faRefresh,
-  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 
 function ListPoll() {
@@ -168,7 +166,7 @@ function ListPoll() {
                 <div className="flex-column col-1">
                   <a
                     aria-label="Do Vote?"
-                    href={"/poll/?id=" + poll.pollID}
+                    href={"/poll-vote/?id=" + poll.pollID}
                     className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
                     style={{ fontSize: "1.5rem" }}
                     title="Do Vote"

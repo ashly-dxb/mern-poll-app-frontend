@@ -83,14 +83,16 @@ function NewPollDetails({ location }) {
                   nottype={toast.not}
                 />
 
-                <CopyToClipboard text={"localhost:3000/poll/?id=" + pollID}>
+                <CopyToClipboard
+                  text={"localhost:3000/poll-vote/?id=" + pollID}
+                >
                   <input
                     type="text"
                     name="lin"
                     id="pollURL"
                     className="w-100 cursor-pointer outline-none py-2 my-3 border px-4 bg-gray-200 text-secondary rounded"
                     readOnly={true}
-                    value={"localhost:3000/poll/?id=" + pollID}
+                    value={"localhost:3000/poll-vote/?id=" + pollID}
                     onClick={handleClick(slideTransition)}
                   />
                 </CopyToClipboard>
@@ -143,7 +145,7 @@ function NewPollDetails({ location }) {
               <a
                 className="fw-bold border-right border-dark mx-2 pe-4"
                 target="_blank"
-                href={"/poll/?id=" + pollID}
+                href={"/poll-vote/?id=" + pollID}
               >
                 Visit your poll
               </a>

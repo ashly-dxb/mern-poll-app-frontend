@@ -46,7 +46,11 @@ function Home() {
       </div>
     </div>
   ) : (
-    <div>NOT Authorised</div>
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
+        <div>Not Authorised</div>
+      </div>
+    </div>
   );
 }
 

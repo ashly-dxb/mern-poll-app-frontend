@@ -4,6 +4,7 @@ import baseURL from "./components/Config";
 import axios from "axios";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
 import Signup from "./Signup";
 import Login from "./Login";
@@ -64,13 +65,15 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/change-password" element={<ChangePassword />} />
 
-            <Route path="/list-poll" element={<ListPoll />} />
+            <Route path="/polls" element={<ListPoll />} />
             <Route path="/create-poll" element={<CreatePoll />} />
             <Route path="/new-poll-details" element={<NewPollDetails />} />
             <Route path="/edit-poll" element={<EditPoll />} />
-            <Route path="/poll" element={<Poll />} />
+            <Route path="/poll-vote" element={<Poll />} />
             <Route path="/poll-result" element={<PollResult />} />
             <Route path="/poll-admin" element={<PollAdmin />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           <Footer />

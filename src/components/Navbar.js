@@ -97,11 +97,11 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.endsWith("/list-poll")
+                      currentRoute.endsWith("/polls")
                         ? "nav-link active"
                         : "nav-link"
                     }
-                    to="/list-poll"
+                    to="/polls"
                     onClick={handleLinkClick}
                   >
                     Polls
@@ -129,7 +129,7 @@ function Navbar() {
                 </li>
 
                 <li className="nav-item">
-                  <Link className={currentRoute.endsWith("xxxxxxx") ? "nav-link active" : "nav-link"} to="/poll/?id=XXX">
+                  <Link className={currentRoute.endsWith("xxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-vote/?id=XXX">
                     Poll
                   </Link>
                 </li>
@@ -185,11 +185,11 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.endsWith("/list-poll")
+                      currentRoute.endsWith("/polls")
                         ? "nav-link active"
                         : "nav-link"
                     }
-                    to="/list-poll"
+                    to="/polls"
                     onClick={handleLinkClick}
                   >
                     Polls

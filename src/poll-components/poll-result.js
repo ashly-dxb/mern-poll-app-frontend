@@ -89,7 +89,7 @@ function PollResult({ location }) {
       <div className="d-flex flex-column align-items-center bg-white">
         <span className="fw-bold ">Scan QR Code</span>
         <QRCode
-          value={`http://localhost:3000/poll/?id=${pollID}`}
+          value={`http://localhost:3000/poll-vote/?id=${pollID}`}
           size={290}
           level={"H"}
           includeMargin={true}
@@ -101,7 +101,7 @@ function PollResult({ location }) {
   const ShowButton = () => (
     <a
       className="bg-success text-decoration-none fw-bold px-2 py-2 rounded-lg text-center text-white "
-      href={"/poll/?id=" + pollID}
+      href={"/poll-vote/?id=" + pollID}
     >
       Submit your Vote
     </a>
@@ -238,7 +238,7 @@ function PollResult({ location }) {
                     </button>
 
                     <SocialShare
-                      url={"http://localhost:3000/poll/?id=" + pollID}
+                      url={"http://localhost:3000/poll-vote/?id=" + pollID}
                       question={question}
                     />
                   </div>
