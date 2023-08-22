@@ -11,7 +11,7 @@ function Footer() {
   return (
     <div className="main-footer">
       <div className="container">
-        <div className="row">
+        {/* <div className="row">
           <div className="col">
             <h5>COMPANY INC</h5>
             <ul className="list-unstyled">
@@ -20,7 +20,7 @@ function Footer() {
               <li>&nbsp;</li>
               <li>
                 <Link
-                  className="rounded-lg shadow-lg mr-3"
+                  className="rounded-lg shadow-lg me-3"
                   to="tel:+971-508570803"
                   // onClick={() => xxxx()}
                 >
@@ -49,14 +49,23 @@ function Footer() {
               <li>Some links</li>
             </ul>
           </div>
-        </div>
+        </div> 
+        
+        
         <hr />
+        */}
+
         <div className="row">
-          <p className="col-sm">
-            &copy;{new Date().getFullYear()}
-            &nbsp;ASHLY THOMAS ABRAHAM | All rights reserved | Terms of service
-            | Privacy Policy |
-          </p>
+          {/* <p className="col-sm">
+          </p> */}
+
+          <ul className="list-unstyled col-sm">
+            <li>
+              &copy;{new Date().getFullYear()}
+              &nbsp;ASHLY THOMAS ABRAHAM | All rights reserved.
+            </li>
+            <li>Terms of service | Privacy Policy</li>
+          </ul>
         </div>
       </div>
     </div>

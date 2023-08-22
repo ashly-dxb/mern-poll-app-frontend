@@ -9,7 +9,7 @@ function Login() {
   sessionStorage.setItem("apiPathURL", "http://localhost:8080/api");
 
   const { user, setUser, authenticated, setAuthenticated } =
-    useContext(ThemeContext); //dark theme
+    useContext(ThemeContext);
 
   const [email, setEmail] = useState("ashlythomas@gmail.com");
   const [password, setPassword] = useState();
@@ -69,7 +69,7 @@ function Login() {
 
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-      <div className="bg-white w-25 p-3 px-5">
+      <div className="bg-white p-5">
         <h3>Login</h3>
 
         <form onSubmit={handleLoginClick}>

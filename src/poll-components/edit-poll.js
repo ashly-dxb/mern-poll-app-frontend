@@ -169,8 +169,8 @@ function EditPoll({ location }) {
   };
 
   return (
-    <div className="flex-container m-3" style={{ paddingTop: "50px" }}>
-      <div className="ui-container px-5">
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
         <form onSubmit={handleSubmit} autoComplete="off">
           <div className="mx-auto">
             <div className="d-flex justify-content-between flex-column flex-md-row align-items-baseline">
@@ -181,14 +181,14 @@ function EditPoll({ location }) {
                 </p>
               </div>
               <Link to={"/poll-admin/?id=" + pollID + "&key=" + key}>
-                <span className="text-light text-decoration-none bg-danger align-self-end font-weight-bold rounded-lg px-4 py-2">
+                <span className="text-light text-decoration-none bg-danger align-self-end fw-bold rounded-lg px-4 py-2">
                   Cancel
                 </span>
               </Link>
             </div>
             <div className="mt-4">
               <div className="flex flex-column question">
-                <label className="mb-3 w-100 font-weight-bold content-text">
+                <label className="mb-3 w-100 fw-bold content-text">
                   Poll Question
                 </label>
                 <TextField
@@ -226,7 +226,7 @@ function EditPoll({ location }) {
                 ]}
               >
                 <MuiAlert onClose={snackbarclose} severity="success">
-                  Success, poll submitted!
+                  Successfully Updated!
                 </MuiAlert>
               </Snackbar>
 
@@ -246,7 +246,7 @@ function EditPoll({ location }) {
                 ]}
               >
                 <MuiAlert onClose={snackbarclose} severity="info">
-                  Added another field!
+                  Option Field Added!
                 </MuiAlert>
               </Snackbar>
 
@@ -254,7 +254,7 @@ function EditPoll({ location }) {
                 <div className="options mt-2 flex-column" key={inputField.id}>
                   <div className="flex align-items-center mb-3">
                     <div className="flex flex-column">
-                      <label className="mb-3 w-100 content-text font-weight-bold">
+                      <label className="mb-3 w-100 content-text fw-bold">
                         Option {index + 1}
                       </label>
                       <div className="flex align-items-center justify-content-between">
@@ -280,7 +280,7 @@ function EditPoll({ location }) {
                         <button
                           hidden={inputFields.length === 2}
                           onClick={() => handleRemoveFields(inputField.id)}
-                          className="delete ml-2 border-0 mx-2"
+                          className="delete border-0 mx-2"
                           title="Delete"
                         >
                           <FontAwesomeIcon
@@ -299,9 +299,9 @@ function EditPoll({ location }) {
                 onClick={handleAddfields}
                 className="px-2 py-2 bg-dark text-white"
               >
-                <span className="mr-3">
+                <span className="me-3">
                   Add another option&nbsp;
-                  <FontAwesomeIcon className="ml-2" icon={faPlus} />
+                  <FontAwesomeIcon className="ms-2" icon={faPlus} />
                 </span>
               </button>
             </div>
@@ -309,9 +309,9 @@ function EditPoll({ location }) {
             <div className="flex justify-content-center mt-2 pt-1">
               <button
                 type="submit"
-                className="px-3 py-3 bg-success text-white font-weight-bold border-0 rounded-lg"
+                className="px-3 py-3 bg-success text-white fw-bold border-0 rounded-lg"
               >
-                <FontAwesomeIcon className="mr-2" icon={faBookmark} />
+                <FontAwesomeIcon className="me-2" icon={faBookmark} />
                 &nbsp; Save Poll
               </button>
             </div>

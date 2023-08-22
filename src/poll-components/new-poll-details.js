@@ -68,12 +68,12 @@ function NewPollDetails({ location }) {
   };
 
   return (
-    <div className="flex-container m-3" style={{ paddingTop: "10px" }}>
-      <div className="ui-container py-5 ">
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
         <div className="bg-white w-75 d-flex flex-column border border-gray mx-auto  rounded-lg shadow-lg">
           <div className="px-5 pt-5 pb-4 ">
             <div className="d-flex flex-column">
-              <h5 className="text-primary-dark">The link to your poll is:</h5>
+              <h5 className="text-dark">The link to your poll is:</h5>
 
               <div className="d-flex w-100">
                 <Notification
@@ -98,9 +98,9 @@ function NewPollDetails({ location }) {
             </div>
 
             <div className="d-flex flex-column mt-5 py-4 border-top border-gray">
-              <h5 className="text-primary-dark ">
-                The <span className="font-weight-bold">admin</span> link to
-                manage your poll is:
+              <h5 className="text-dark ">
+                The <span className="fw-bold">admin</span> link to manage your
+                poll is:
               </h5>
 
               <div className="d-flex w-100">
@@ -121,7 +121,7 @@ function NewPollDetails({ location }) {
                     }
                   >
                     <div
-                      className="bg-dark text-white text-center d-flex align-items-center justify-content-center hover-bg-gray font-weight-bold w-30 "
+                      className="bg-dark text-white text-center d-flex align-items-center justify-content-center hover-bg-gray fw-bold w-30 "
                       style={{ opacity: "0.9" }}
                       onClick={handleClick(slideTransition)}
                     >
@@ -131,7 +131,7 @@ function NewPollDetails({ location }) {
                 </div>
               </div>
 
-              <p className="text-sm mt-2 d-flex align-items-center text-warning py-1 font-weight-bold">
+              <p className="text-sm mt-2 d-flex align-items-center text-warning py-1 fw-bold">
                 <FontAwesomeIcon icon={faExclamationTriangle} />
                 &nbsp;Do not share this link with your participants!
               </p>
@@ -139,16 +139,16 @@ function NewPollDetails({ location }) {
           </div>
 
           <div className="d-flex px-5 py-4 w-100">
-            <div className="ml-auto d-flex align-items-center">
+            <div className="ms-auto d-flex align-items-center">
               <a
-                className="font-weight-bold border-right border-dark mx-2 pr-4"
+                className="fw-bold border-right border-dark mx-2 pe-4"
                 target="_blank"
                 href={"/poll/?id=" + pollID}
               >
                 Visit your poll
               </a>
               <a
-                className="font-weight-bold border-right border-dark mx-2 pr-4"
+                className="fw-bold border-right border-dark mx-2 pe-4"
                 target="_blank"
                 href={"/poll-admin/?id=" + pollID + "&key=" + key}
               >

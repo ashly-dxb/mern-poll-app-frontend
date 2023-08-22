@@ -115,18 +115,18 @@ function Poll({ location }) {
   };
 
   return (
-    <div className="flex-container m-3" style={{ paddingTop: "10px" }}>
-      <div className="ui-container py-5 px-3">
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
         <div>
-          <h2 className="w-100 heading" style={{ wordWrap: "break-word" }}>
+          <h2 className="heading" style={{ wordWrap: "break-word" }}>
             {question}
           </h2>
 
-          <div className="flex flex-column w-60 ">
+          <div className="flex flex-column">
             <form>
               {options.map((option) => (
                 <div
-                  className="py-3 w-100 mb-4 shadow-lg hover-zoom rounded bg-white  radio-label"
+                  className="py-3 mb-4 shadow-lg hover-zoom rounded bg-white radio-label"
                   key={option.id}
                 >
                   <div className="d-flex align-items-center">
@@ -137,12 +137,13 @@ function Poll({ location }) {
                       value={option.options}
                       checked={response.options === option.options}
                       onChange={() => settingResponse({ option })}
-                      className="d-inline-block"
+                      className="d-inline-block me-2 ms-3 mb-2"
+                      // style={{ marginBottom: "6px", marginLeft: "3px" }}
                     />
 
-                    <label htmlFor={option.id} className="w-100">
+                    <label htmlFor={option.id}>
                       <h5
-                        className="d-inline-block font-weight-bold text-primary-dark"
+                        className="d-inline-block fw-bold"
                         style={{
                           wordWrap: "break-word",
                           width: "100%",
@@ -160,7 +161,7 @@ function Poll({ location }) {
                   <button
                     type="submit"
                     onClick={handleSubmit}
-                    className="font-weight-bold focus-shadow w-50 bg-success border-0 text-white py-3 px-2 shadow-lg hover-shadow-lg rounded-lg"
+                    className="fw-bold focus-shadow w-25 bg-success border-0 text-white py-3 px-2 shadow-lg hover-shadow-lg rounded-lg"
                   >
                     Submit Vote
                   </button>
@@ -173,7 +174,7 @@ function Poll({ location }) {
                   nottype={toast.not}
                 />
 
-                <div className="col-0 col-md-4 float-right text-secondary font-weight-bold focus-shadow">
+                <div className="col-0 col-md-4 float-right text-secondary fw-bold focus-shadow">
                   <Link to={"/poll-result/?id=" + pollID}>
                     View Results <FontAwesomeIcon icon={faChevronRight} />
                   </Link>

@@ -175,7 +175,7 @@ class TodoList extends Component {
                   </div>
 
                   <div className="flex-child-element">
-                    {moment(task.created_date).format("YYYY-MM-DD")}
+                    {moment(task.created_date).format("YYYY-MM-DD HH:mm")}
                   </div>
 
                   <div className="flex-child-element">
@@ -184,6 +184,7 @@ class TodoList extends Component {
                       color="primary"
                       variant="outlined"
                       size="small"
+                      className="mx-2 my-1"
                     >
                       Modify
                     </Button>
@@ -193,6 +194,7 @@ class TodoList extends Component {
                       color="secondary"
                       variant="outlined"
                       size="small"
+                      className="mx-2 my-1"
                     >
                       Delete
                     </Button>

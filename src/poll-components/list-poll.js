@@ -70,14 +70,14 @@ function ListPoll() {
 
           <div className="px-3 py-3 d-flex justify-content-end">
             <button
-              className="border-light rounded-lg shadow-lg px-4 py-2 mr-3"
+              className="border-light rounded-lg shadow-lg px-4 py-2 me-3"
               onClick={() => setShowDelete(false)}
             >
               Cancel
             </button>
             &nbsp;
             <button
-              className="bg-danger border-light rounded-lg shadow-lg text-light px-4 py-2 ml-3"
+              className="bg-danger border-light rounded-lg shadow-lg text-light px-4 py-2 ms-3"
               onClick={deletePoll}
             >
               Delete
@@ -113,8 +113,8 @@ function ListPoll() {
   };
 
   return (
-    <div className="flex-container m-3" style={{ paddingTop: "10px" }}>
-      <div className="ui-container py-5 px-5">
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
         <div className="xxx">
           <div className="">
             <div className="clearfix w-100 border-0 border-black">
@@ -123,7 +123,7 @@ function ListPoll() {
               </div>
               <div className="float-end">
                 <Link
-                  className="rounded-lg shadow-lg mr-3"
+                  className="rounded-lg shadow-lg me-3"
                   onClick={() => loadList()}
                 >
                   <FontAwesomeIcon

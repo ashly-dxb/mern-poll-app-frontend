@@ -56,6 +56,7 @@ function CreatePoll() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const emptyQuestion = questions.question.trim().length > 0;
     const emptyOptions = inputFields.every((obj) => {
       return obj.options.length > 0;
@@ -101,6 +102,7 @@ function CreatePoll() {
       }
       return i;
     });
+
     setInputFields(newInputFields);
   };
 
@@ -114,7 +116,7 @@ function CreatePoll() {
       { id: uuidv4(), options: "", error: false },
     ]);
 
-    setToast({ snackbaropen: true, msg: "Added another field!", not: "info" });
+    setToast({ snackbaropen: true, msg: "Option Field Added!", not: "info" });
   };
 
   const handleRemoveFields = (id) => {
@@ -124,6 +126,7 @@ function CreatePoll() {
       values.findIndex((value) => value.id === id),
       1
     );
+
     setInputFields(values);
   };
 
@@ -141,11 +144,14 @@ function CreatePoll() {
   };
 
   return (
-    <div className="flex-container m-3" style={{ paddingTop: "10px" }}>
-      <div className="ui-container py-5 px-5">
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
         <form onSubmit={handleSubmit} autoComplete="off">
-          <div className="xxxx">
-            <div className="d-flex justify-content-between flex-column flex-md-row align-items-baseline">
+          <div>
+            <div
+              className="d-flex justify-content-between flex-column flex-md-row align-items-baseline"
+              // style={{ border: "1px solid orange" }}
+            >
               <div>
                 <h3>Create Poll</h3>
                 <p className="mt-4 mb-0 text-large text-secondary font-medium">
@@ -154,11 +160,12 @@ function CreatePoll() {
               </div>
             </div>
 
-            <div className="mt-4">
+            <div
+              className="mt-4"
+              // style={{ border: "1px solid blue" }}
+            >
               <div className="d-flex flex-column ">
-                <label className="mb-3 w-100 font-weight-bold content-text">
-                  Poll Question
-                </label>
+                <label className="mb-3 fw-bold">Question</label>
                 <TextField
                   {...(showError(questions.question, questions.error) && {
                     ...{
@@ -171,7 +178,7 @@ function CreatePoll() {
                   multiline={true}
                   minRows={3}
                   autoFocus={true}
-                  className=" w-100 py-4 bg-light rounded-lg px-3 outline-none  border border-gray "
+                  className="px-3 py-4 rounded-lg outline border border-gray "
                   placeholder="Ex: What's your favorite TV show?"
                   value={questions.question}
                   onChange={(event) => handleQuestion(questions.id, event)}
@@ -189,9 +196,7 @@ function CreatePoll() {
                 <div className="options mt-2 flex-column " key={inputField.id}>
                   <div className=" mb-3">
                     <div className="d-flex flex-column">
-                      <label className="mb-3 w-100 content-text font-weight-bold">
-                        Option {index + 1}
-                      </label>
+                      <label className="mb-3 fw-bold">Option {index + 1}</label>
                       <div className="">
                         <TextField
                           {...(showError(
@@ -205,7 +210,7 @@ function CreatePoll() {
                           })}
                           id={inputField.id}
                           name="options"
-                          className=" py-3 rounded-lg px-3 bg-light inputfield focus-shadow  focus-outline-none  border "
+                          className="px-3 py-3 rounded-lg inputfield focus-shadow  focus-outline-none  border border-grey"
                           placeholder={"Option" + (index + 1)}
                           value={inputField.options}
                           onChange={(event) =>
@@ -216,7 +221,7 @@ function CreatePoll() {
                         <button
                           hidden={inputFields.length === 2}
                           onClick={() => handleRemoveFields(inputField.id)}
-                          className=" delete ml-2 border-0 mx-2"
+                          className=" delete border-0 mx-2"
                           title="Delete"
                         >
                           <FontAwesomeIcon
@@ -235,19 +240,22 @@ function CreatePoll() {
                 onClick={handleAddfields}
                 className="px-2 py-2 bg-dark text-white"
               >
-                <span className="mr-3">
-                  <FontAwesomeIcon className="ml-2" icon={faPlus} />
-                  Add another option&nbsp;
+                <span className="me-3">
+                  <FontAwesomeIcon className="mx-2" icon={faPlus} />
+                  Add option&nbsp;
                 </span>
               </button>
             </div>
 
-            <div className="mt-5 pt-3">
+            <div
+              className="mt-4 pt-3"
+              // style={{ border: "1px solid red" }}
+            >
               <button
                 type="submit"
-                className="px-5 py-3 bg-success text-white font-weight-bold border-0 rounded-lg"
+                className="px-5 py-3 bg-success text-white fw-bold border-0 rounded-lg"
               >
-                <FontAwesomeIcon className="mr-2" icon={faBolt} />
+                <FontAwesomeIcon className="me-2" icon={faBolt} />
                 &nbsp;Create Poll
               </button>
             </div>
@@ -255,12 +263,7 @@ function CreatePoll() {
         </form>
       </div>
 
-      <p
-        className="text-center font-weight-bold"
-        style={{ fontSize: "1.3rem", color: "skyblue" }}
-      >
-        END OF PAGE
-      </p>
+      <hr style={{ color: "red", height: "5px" }} />
     </div>
   );
 }

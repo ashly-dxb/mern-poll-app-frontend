@@ -22,7 +22,7 @@ function Navbar() {
     axios
       .get(baseURL + "/users/logout")
       .then((result) => {
-        console.log("Logged out success!", result);
+        console.log("Logged out success!", result.data);
 
         setUser({});
         setAuthenticated(result.data.authenticated);
@@ -69,7 +69,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/login")
+                      currentRoute.endsWith("/login")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -83,7 +83,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/register")
+                      currentRoute.endsWith("/register")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -97,7 +97,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/list-poll")
+                      currentRoute.endsWith("/list-poll")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -111,7 +111,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/create-poll")
+                      currentRoute.endsWith("/create-poll")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -123,25 +123,25 @@ function Navbar() {
                 </li>
 
                 {/* <li className="nav-item">
-                  <Link className={currentRoute.includes("xxxx") ? "nav-link active" : "nav-link"} to="/new-poll-details/?id=XXX">
+                  <Link className={currentRoute.endsWith("xxxx") ? "nav-link active" : "nav-link"} to="/new-poll-details/?id=XXX">
                     Poll Details
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className={currentRoute.includes("xxxxxxx") ? "nav-link active" : "nav-link"} to="/poll/?id=XXX">
+                  <Link className={currentRoute.endsWith("xxxxxxx") ? "nav-link active" : "nav-link"} to="/poll/?id=XXX">
                     Poll
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className={currentRoute.includes("xxxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-result/?id=XXX">
+                  <Link className={currentRoute.endsWith("xxxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-result/?id=XXX">
                     Poll Result
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className={currentRoute.includes("xxxxxxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-admin/?id=XXX&key=YYY">
+                  <Link className={currentRoute.endsWith("xxxxxxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-admin/?id=XXX&key=YYY">
                     Poll Admin
                   </Link>
                 </li> */}
@@ -155,7 +155,8 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/home")
+                      currentRoute.endsWith("/home") ||
+                      currentRoute.endsWith("/")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -170,7 +171,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("tasks")
+                      currentRoute.endsWith("tasks")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -184,7 +185,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/list-poll")
+                      currentRoute.endsWith("/list-poll")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -198,7 +199,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/create-poll")
+                      currentRoute.endsWith("/create-poll")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -212,7 +213,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/settings")
+                      currentRoute.endsWith("/settings")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -226,7 +227,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.includes("/change-password")
+                      currentRoute.endsWith("/change-password")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -246,9 +247,13 @@ function Navbar() {
           <div className="d-flex">
             <b>{user?.name}</b>
             &nbsp;
-            <button className="btn btn-outline-secondary bg-light">
-              <Link onClick={handleLogout}>Logout</Link>
-            </button>
+            {authenticated ? (
+              <button className="btn btn-outline-secondary bg-light">
+                <Link onClick={handleLogout}>Logout</Link>
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

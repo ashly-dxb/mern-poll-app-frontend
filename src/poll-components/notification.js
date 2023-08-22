@@ -36,10 +36,10 @@ function getStyle(type) {
 function Notification(props) {
   return (
     <Snackbar
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       open={props.switcher}
       onClose={props.close}
       autoHideDuration={6000}
+      anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
       action={[
         <IconButton arial-label="Close" color="inherit" onClick={props.close}>
           x

@@ -12,7 +12,6 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log("baseURL: ", baseURL);
 
     axios
@@ -30,7 +29,7 @@ function Signup() {
 
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-      <div className="bg-white w-25 p-3 px-5">
+      <div className="bg-white p-5" style={{ border: "1px solid blue" }}>
         <h3>Register</h3>
 
         <form onSubmit={handleSubmit}>

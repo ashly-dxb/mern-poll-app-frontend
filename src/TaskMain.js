@@ -23,49 +23,47 @@ class TaskMain extends Tasks {
 
   render() {
     return (
-      <div className="flex-container m-3" style={{ paddingTop: "60px" }}>
-        <Paper elevation={10} className="container">
-          <div className="heading">TO-DO List</div>
+      <div className="flex-container m-3">
+        <div className="ui-container py-5 px-2">
+          <Paper elevation={10} className="container">
+            <div className="task_heading">TO-DO List</div>
 
-          <form
-            onSubmit={this.handleAddTask}
-            className="create_form"
-            style={{ margin: "15px 10px" }}
-          >
-            <TextField
-              variant="outlined"
-              size="small"
-              style={{ width: "50%", marginRight: "7px" }}
-              value={this.state.currentTask}
-              required={true}
-              onChange={this.handleChange}
-              placeholder="New Item"
-            />
+            <form onSubmit={this.handleAddTask} className="task_create_form">
+              <TextField
+                variant="outlined"
+                size="small"
+                style={{ width: "50%", marginRight: "7px" }}
+                value={this.state.currentTask}
+                required={true}
+                onChange={this.handleChange}
+                placeholder="New Task"
+              />
 
-            <Button
-              type="submit"
-              style={{ height: "40px" }}
-              color="primary"
-              variant="contained"
-              size="large"
-            >
-              Add Task
-            </Button>
+              <Button
+                type="submit"
+                style={{ height: "34px" }}
+                color="primary"
+                variant="contained"
+                size="large"
+              >
+                Add Task
+              </Button>
 
-            <IconButton
-              type="button"
-              color="primary"
-              variant="contained"
-              size="small"
-              onClick={this.refreshList}
-              title="Refresh"
-            >
-              <img src={refreshImage} width="30" alt="refresh" />
-            </IconButton>
-          </form>
+              <IconButton
+                type="button"
+                color="primary"
+                variant="contained"
+                size="small"
+                onClick={this.refreshList}
+                title="Refresh"
+              >
+                <img src={refreshImage} width="30" alt="refresh" />
+              </IconButton>
+            </form>
 
-          <TodoList refresh={this.state.refresh} />
-        </Paper>
+            <TodoList refresh={this.state.refresh} />
+          </Paper>
+        </div>
       </div>
     );
   }

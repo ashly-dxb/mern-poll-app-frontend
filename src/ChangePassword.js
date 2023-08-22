@@ -67,8 +67,8 @@ function ChangePassword() {
   };
 
   return auth ? (
-    <div className="flex-container m-3" style={{ paddingTop: "10px" }}>
-      <div className="ui-container py-5 px-5">
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
         <div className="col-md-3 p-2">
           <div className="d-flex justify-content-between flex-column flex-md-row align-items-baseline">
             <div>

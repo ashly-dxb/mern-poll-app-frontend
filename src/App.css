@@ -2,8 +2,6 @@
   text-align: center;
 }
 
-
-
 * {
   font-family: Verdana, 'Roboto';
   font-size: 14px;
@@ -40,8 +38,8 @@
 }
 
 .snackbarError {
-  background-color: "red";
-  color: "white";
+  background-color: "red" !important;
+  color: "white" !important;
 }
 
 .snackbarInfo {
@@ -69,6 +67,9 @@
 }
 
 
+
+
+
 .main-header, .navbar {
   background-color: rgb(179, 153, 153);
   color: rgb(71, 55, 165) !important;
@@ -79,39 +80,36 @@
 
 /* Adjusting footer to bottom */
 html, body {
-  min-height: 100vh;
-  /* display: block; */
-  display: flex;
-  flex-direction: column;
+  /* min-height: 100vh; */
+  /* display: flex;
+  flex-direction: column; */
+
+  padding-top: 15px; /* for navbar space*/
+  padding-bottom: 22px; /* for footer space*/
 }
 
 #root {
-  /* min-height: calc(100% - 230px); */
-  /* display: block; */
-  /* flex-direction: column; */
-  background-color: rgb(200, 213, 221);
-  margin-bottom: auto;
-  overflow-y: auto;
-
-  /* min-height: 90vh; */
-  /* display: flex; */
-  /* flex-direction:column; */
-  /* justify-content:space-between; */
+  
 }
 
 .main-footer {  
-
-  position: fixed;
+  /* position: fixed;
   display: block;
   bottom: 0;
   width: 100%;
-  margin-top: auto;
+  margin-top: auto; */
 
-  color: hsl(210,8%,75%);
-  background-color: hsl(210,8%,15%);
-  padding-top: 2em;
-  padding-bottom: 1em;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  box-sizing: border-box;
+
+  color: hsl(210, 8%, 75%);
+  background-color: hsl(210, 8%, 15%);
 }
+
+
+
 
 .nav-link {
   color: white !important;
@@ -127,5 +125,65 @@ html, body {
   color: rgb(138, 138, 187) !important;
   font-weight: bold;
   letter-spacing: 1pt;
+}
+
+
+
+
+/* TODO List page */
+
+.task_create_form {
+  padding: 10px 40px;
+  margin: 15px 10px;
+
+  border: 1px solid #cccccc;
+  border: 1px solid rgb(130, 130, 172);
+}
+
+.task_heading {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px 10px;
+
+  /* border: 1px solid grey; */
+}
+
+.line_through {
+  text-decoration: line-through;
+}
+
+.task_root {
+  /* border: 1px solid blue; */
+  padding-bottom: 10px;
+}
+
+.task_container {
+  margin: 12px 10px;
+  border: 1px solid grey;
+  /* margin-bottom: 10px; */
+}
+
+.task {
+  /* background-color: rgb(238, 229, 229); */
+  /* border: 1px solid grey; */
+}
+
+
+.flex-parent-element {
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.flex-child-element {
+  flex: 1;
+  /* border: 1px solid grey; */
+  /* margin: 10px; */
+  text-align: left;
+}
+
+.flex-child-element:first-child {
+  margin-right: 20px;
 }
 

@@ -66,9 +66,6 @@ function PollAdmin({ location }) {
   }, []);
 
   useEffect(() => {
-    // var x = queryString.parse(location.search);
-    // const id = x.id;
-
     const id = new URLSearchParams(window.location.search).get("id");
     const key = new URLSearchParams(window.location.search).get("key");
 
@@ -168,7 +165,7 @@ function PollAdmin({ location }) {
       }}
     >
       <div className="d-flex flex-column align-items-center bg-white">
-        <span className="font-weight-bold ">Scan QR Code</span>
+        <span className="fw-bold ">Scan QR Code</span>
         <QRCode
           value={`http://localhost:3000/poll/?id=${pollID}`}
           size={290}
@@ -181,7 +178,7 @@ function PollAdmin({ location }) {
 
   const ShowButton = () => (
     <a
-      className="bg-success text-decoration-none font-weight-bold mb-5 px-2 py-4 rounded-lg text-center text-white "
+      className="bg-success text-decoration-none fw-bold mb-5 px-2 py-4 rounded-lg text-center text-white "
       href={"/poll/?id=" + pollID}
     >
       Submit your vote
@@ -190,7 +187,7 @@ function PollAdmin({ location }) {
 
   const ShowSelection = () => (
     <span
-      className="bg-info w-100 text-decoration-none font-weight-bold mb-5 px-2 py-3 rounded-lg text-center text-white "
+      className="bg-info w-100 text-decoration-none fw-bold mb-5 px-2 py-3 rounded-lg text-center text-white "
       style={{
         wordWrap: "break-word",
       }}
@@ -200,8 +197,8 @@ function PollAdmin({ location }) {
   );
 
   return (
-    <div className="flex-container m-3" style={{ paddingTop: "20px" }}>
-      <div className="ui-container py-4 position-relative">
+    <div className="flex-container m-3">
+      <div className="ui-container py-5 px-2">
         <div className="d-flex flex-column  flex-md-row justify-content-between align-items-md-center">
           <div className="d-flex flex-column mb-4 mb-md-0">
             <h2 className="heading-2">Manage Poll</h2>
@@ -210,12 +207,12 @@ function PollAdmin({ location }) {
             </p>
           </div>
 
-          <div className="d-flex align-items-center mr-4 mr-md-4 justify-content-around justify-content-md-center">
+          <div className="d-flex align-items-center me-4 me-md-4 justify-content-around justify-content-md-center">
             {totalvotes === 0 ? (
               <a
                 aria-label="Edit Poll?"
                 href={"/edit-poll/?id=" + pollID + "&key=" + key}
-                className="text-primary-dark outline-none rounded hover-shadow text-warning border-0 bg-transparent"
+                className="text-dark outline-none rounded hover-shadow text-warning border-0 bg-transparent"
                 // style={{ fontSize: "1.5rem" }}
                 title="Modify"
                 style={{ border: "1px solid red" }}
@@ -227,7 +224,7 @@ function PollAdmin({ location }) {
             <button
               aria-label={"Delete this Poll?"}
               role="alert"
-              className="text-primary-dark outline-none rounded hover-shadow text-danger border-0 bg-transparent"
+              className="text-dark outline-none rounded hover-shadow text-danger border-0 bg-transparent"
               // style={{ fontSize: "1.5rem" }}
               title="Delete"
               onClick={() => setShowDelete(true)}
@@ -239,7 +236,7 @@ function PollAdmin({ location }) {
 
         <div className="mb-5 mb-md-5 pb-md-0 my-4">
           <h2
-            className=" mb-5 heading w-100"
+            className="mb-5 heading"
             style={{
               wordWrap: "break-word",
             }}
@@ -251,45 +248,47 @@ function PollAdmin({ location }) {
             <div className="d-flex flex-column col-12 col-md-6 col-lg-6">
               <div style={{ position: "relative" }}>
                 <div>
-                  {options.map((x, index) => (
+                  {options.map((eachOption, index) => (
                     <div
                       className="py-0 bg-white px-3 rounded-lg shadow-lg position-relative"
                       key={index}
                     >
                       <div className="d-flex w-100 justify-content-between">
                         <div
-                          className="d-flex align-items-center"
+                          className="d-flex align-items-center mt-2"
                           style={{ width: "88%" }}
                         >
                           <h4
-                            className=" font-weight-bold text-primary-dark"
+                            className=" fw-bold text-dark"
                             style={{
                               wordWrap: "break-word",
                               width: "80%",
                             }}
                           >
-                            {x.options}
+                            {eachOption.options}
                           </h4>
                         </div>
 
-                        <div className=" ">
-                          <h4 className="font-weight-bold text-primary-dark">
+                        <div className="d-flex align-items-center mt-2">
+                          <h4 className="fw-bold text-dark">
                             {totalvotes === 0
                               ? 0
-                              : ((x.count / totalvotes) * 100).toFixed(0)}
+                              : ((eachOption.count / totalvotes) * 100).toFixed(
+                                  0
+                                )}
                             %
                           </h4>
                         </div>
                       </div>
 
-                      <div className="w-100 rounded-lg ">
+                      <div className="rounded-lg">
                         <div
                           className="rounded-lg d-block mt-3"
                           style={{
                             width: `${
                               totalvotes === 0
                                 ? 0
-                                : (x.count / totalvotes) * 100
+                                : (eachOption.count / totalvotes) * 100
                             }%`,
                             height: "0.5rem",
                             backgroundColor: `${randomColor()}`,
@@ -298,7 +297,9 @@ function PollAdmin({ location }) {
                           &nbsp;
                         </div>
                       </div>
-                      <p className="mt-3 text-green">{x.count} Votes</p>
+                      <p className="mt-3 text-green">
+                        {eachOption.count} Votes
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -325,26 +326,24 @@ function PollAdmin({ location }) {
               <div className="w-100 bg-white d-flex flex-column border-gray-300 border-top-0 rounded-lg self-start px-3 py-3 ">
                 <div className="d-flex flex-column justify-content-between">
                   <div className="">
-                    <p className="font-weight-normal text-secondary text-left mb-0 text-sm lg:text-base">
+                    <p className="fw-normal text-secondary text-left mb-0 text-sm lg:text-base">
                       Total Votes
                     </p>
-                    <h3 className="font-weight-bold text-primary-dark">
-                      {totalvotes}
-                    </h3>
+                    <h3 className="fw-bold text-dark">{totalvotes}</h3>
                   </div>
 
                   <div className="d-flex flex-row flex-md-column">
-                    <p className="font-weight-bold d-md-inline-block mt-2 mb-4 text-primary-secondary text-left">
+                    <p className="fw-bold d-md-inline-block mt-2 mb-4 text-primary-secondary text-left">
                       Share
                     </p>
 
                     <button
-                      className="bg-warning font-weight-bold mb-4 px-0 py-2 rounded-lg text-center border-0 text-white mr-3 "
+                      className="bg-warning fw-bold mb-4 px-0 py-2 rounded-lg text-center border-0 text-white me-3 "
                       onClick={() => {
                         setShowQR(true);
                       }}
                     >
-                      <FontAwesomeIcon className="ml-3 mr-3" icon={faQrcode} />
+                      <FontAwesomeIcon className="ms-3 me-3" icon={faQrcode} />
                       <span className="d-md-inline-block ">
                         Share via QRcode
                       </span>
