@@ -68,7 +68,11 @@ function Login() {
           setUser(result.data.user);
           setAuthenticated(result.data.authenticated);
 
+          console.log("Login 1111");
+
           navigate("/home");
+
+          console.log("Login 2222");
         } else {
           setError(result.data.error);
           console.log("Login failed...");

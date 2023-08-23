@@ -29,7 +29,7 @@ function Signup() {
 
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-      <div className="bg-white p-5" style={{ border: "1px solid blue" }}>
+      <div className="bg-white p-5">
         <h3>Register</h3>
 
         <form onSubmit={handleSubmit}>
