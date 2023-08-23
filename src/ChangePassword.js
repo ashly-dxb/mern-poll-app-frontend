@@ -30,7 +30,7 @@ function ChangePassword() {
 
   useEffect(() => {
     axios
-      .get(baseURL + "/users")
+      .get(baseURL + "/users/checkauth")
       .then((result) => {
         if (result.data.valid) {
           console.log("Auth Valid");

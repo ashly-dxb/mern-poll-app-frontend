@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(baseURL + "/users")
+      .get(baseURL + "/users/checkauth")
       .then((result) => {
         if (result.data.valid) {
           console.log("Auth valid in APP component, setting context data");

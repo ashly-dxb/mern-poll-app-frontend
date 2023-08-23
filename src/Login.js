@@ -35,7 +35,7 @@ function Login() {
     sessionStorage.setItem("apiPathURL", "http://localhost:8080/api");
 
     axios
-      .get(baseURL + "/users")
+      .get(baseURL + "/users/checkauth")
       .then((result) => {
         if (result.data.valid) {
           console.log("valid:  success");
