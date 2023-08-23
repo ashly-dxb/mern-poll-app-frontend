@@ -14,7 +14,7 @@ function Login() {
   const { user, setUser, authenticated, setAuthenticated } =
     useContext(ThemeContext);
 
-  const [email, setEmail] = useState("ashlythomas@gmail.com");
+  const [email, setEmail] = useState("xxxx@gmail.com");
   const [password, setPassword] = useState();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
