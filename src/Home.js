@@ -17,19 +17,19 @@ function Home() {
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios
-      .get(baseURL + "/users/checkauth")
-      .then((result) => {
-        if (result.data.valid) {
-          console.log("Auth is valid in Home");
-          setName(result.data.name);
-          setAuth(true);
-        } else {
-          setAuth(false);
-          navigate("/login");
-        }
-      })
-      .catch((err) => console.log(err));
+    // axios
+    //   .get(baseURL + "/users/checkauth")
+    //   .then((result) => {
+    //     if (result.data.valid) {
+    //       console.log("Auth is valid in Home");
+    //       setName(result.data.name);
+    //       setAuth(true);
+    //     } else {
+    //       setAuth(false);
+    //       navigate("/login");
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
   }, [navigate]);
 
   return auth ? (
