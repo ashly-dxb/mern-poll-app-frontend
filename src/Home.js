@@ -37,9 +37,7 @@ function Home() {
       <div className="ui-container py-5 px-2">
         <div className="">
           <div className="d-flex justify-content-between flex-column flex-md-row align-items-baseline">
-            <div>
-              <h3>Dashboard</h3>
-            </div>
+            <h3>Dashboard</h3>
           </div>
 
           {auth ? (

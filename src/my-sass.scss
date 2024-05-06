@@ -1,0 +1,14 @@
+$myColor: red;
+$myColor2: yellow;
+
+$labelColor: #ffccaa;
+
+h3 {
+  color: $myColor;
+  background-color: $myColor2;
+}
+
+label{
+  color: $labelColor;
+  // background-color: $myColor2;
+}

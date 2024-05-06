@@ -135,11 +135,6 @@ function ListPoll() {
             </div>
           </div>
 
-          {/* <div className="d-flex flex-row justify-content-between bg-grey border border-black">
-            <div>Left</div>
-            <div>Right</div>
-          </div> */}
-
           <div className="d-flex flex-md-row w-100 py-3 fw-bold">
             <div className="flex-column col-4 text-wrap">Poll Question</div>
             <div className="flex-column col-2">Created Date</div>
@@ -157,9 +152,9 @@ function ListPoll() {
                 key={index}
               >
                 {/* <div className="flex-column col-4">{poll.pollID}</div> */}
-                <div className="flex-column col-4">{poll.question}</div>
+                <div className="flex-column col-4 fs-6">{poll.question}</div>
                 <div className="flex-column col-2 fs-6">{poll.createdDate}</div>
-                <div className="flex-column col-1 fs-5 mx-5 text-end">
+                <div className="flex-column col-1 fs-6 mx-5 text-end">
                   {poll.totalVotes}
                 </div>
 
@@ -186,6 +181,7 @@ function ListPoll() {
                     <FontAwesomeIcon icon={faPencilAlt} />
                   </a>
                 </div>
+
                 <div className="flex-column col-1">
                   <button
                     aria-label={"Delete Poll?"}
@@ -201,6 +197,7 @@ function ListPoll() {
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                 </div>
+
                 <div className="flex-column col-1">
                   <a
                     aria-label="View Results?"

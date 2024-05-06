@@ -14,8 +14,8 @@ function Login() {
   const { user, setUser, authenticated, setAuthenticated } =
     useContext(ThemeContext);
 
-  const [email, setEmail] = useState("xxxx@gmail.com");
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("ashlythomas@gmail.com");
+  const [password, setPassword] = useState("abcd1234");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -68,11 +68,7 @@ function Login() {
           setUser(result.data.user);
           setAuthenticated(result.data.authenticated);
 
-          console.log("Login 1111");
-
           navigate("/home");
-
-          console.log("Login 2222");
         } else {
           setError(result.data.error);
           console.log("Login failed...");

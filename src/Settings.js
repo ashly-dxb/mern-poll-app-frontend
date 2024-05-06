@@ -5,7 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeContext } from "./ThemeContext";
 
-function Home() {
+function Settings() {
   const { user, setUser, authenticated, setAuthenticated } =
     useContext(ThemeContext); //dark theme
 
@@ -37,9 +37,7 @@ function Home() {
       <div className="ui-container py-5 px-2">
         <div className="">
           <div className="d-flex justify-content-between flex-column flex-md-row align-items-baseline">
-            <div>
-              <h3>Settings</h3>
-            </div>
+            <h3>Settings</h3>
           </div>
         </div>
         <div>Some settings</div>
@@ -54,4 +52,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Settings;

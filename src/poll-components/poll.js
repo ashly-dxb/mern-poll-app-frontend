@@ -41,9 +41,6 @@ function Poll({ location }) {
   }, [navigate]);
 
   useEffect(() => {
-    // var x = queryString.parse(location.search);
-    // const id = x.id;
-
     const id = new URLSearchParams(window.location.search).get("id");
     console.log("ID from URL: ", id);
 
@@ -79,7 +76,6 @@ function Poll({ location }) {
     };
 
     setResponse(response);
-
     console.log("settingResponse", response);
 
     setVerifier({ id: pollID, selected: option.options, show: 0 });

@@ -1,0 +1,6 @@
+
+
+TO START CLIENT:
+
+npm start
+

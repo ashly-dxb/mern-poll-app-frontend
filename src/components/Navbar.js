@@ -33,15 +33,12 @@ function Navbar() {
   };
 
   const handleLinkClick = () => {
-    // console.log("Now isOpen:", isOpen, "Setting to", !isOpen);
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav className="main-header navbar bg-dark fixed-top navbar-expand-md">
+    <nav className="main-header navbar  fixed-top navbar-expand-sm">
       <div className="container-fluid">
-        {/* <span className="app-heading">TODO App</span> */}
-
         <button
           className="navbar-toggler"
           type="button"
@@ -65,7 +62,7 @@ function Navbar() {
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {!authenticated ? (
-              <Fragment>
+              <>
                 <li className="nav-item">
                   <Link
                     className={
@@ -122,6 +119,20 @@ function Navbar() {
                   </Link>
                 </li>
 
+                <li className="nav-item">
+                  <Link
+                    className={
+                      currentRoute.endsWith("/test")
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                    to="/test"
+                    onClick={handleLinkClick}
+                  >
+                    Test API
+                  </Link>
+                </li>
+
                 {/* <li className="nav-item">
                   <Link className={currentRoute.endsWith("xxxx") ? "nav-link active" : "nav-link"} to="/new-poll-details/?id=XXX">
                     Poll Details
@@ -145,7 +156,7 @@ function Navbar() {
                     Poll Admin
                   </Link>
                 </li> */}
-              </Fragment>
+              </>
             ) : (
               ""
             )}

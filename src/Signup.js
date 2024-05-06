@@ -4,6 +4,8 @@ import baseURL from "./components/Config";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import "./my-sass.scss";
+
 function Signup() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -29,7 +31,7 @@ function Signup() {
 
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-      <div className="bg-white p-5">
+      <div className="bg-white p-5 w-75">
         <h3>Register</h3>
 
         <form onSubmit={handleSubmit}>

@@ -12,11 +12,12 @@ import Home from "./Home";
 import TaskMain from "./TaskMain";
 import ChangePassword from "./ChangePassword";
 import Settings from "./Settings";
+import TestAPI from "./Test";
 
 import CreatePoll from "./poll-components/create-poll";
-import ListPoll from "./poll-components/list-poll";
 import NewPollDetails from "./poll-components/new-poll-details";
 import EditPoll from "./poll-components/edit-poll";
+import ListPoll from "./poll-components/list-poll";
 import Poll from "./poll-components/poll";
 import PollResult from "./poll-components/poll-result";
 import PollAdmin from "./poll-components/poll-admin";
@@ -55,6 +56,7 @@ function App() {
         value={{ user, setUser, authenticated, setAuthenticated }}
       >
         <Navbar />
+
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -63,6 +65,7 @@ function App() {
             <Route path="/tasks" element={<TaskMain />} />
             <Route path="/home" element={<Home />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/test" element={<TestAPI />} />
             <Route path="/change-password" element={<ChangePassword />} />
 
             <Route path="/polls" element={<ListPoll />} />
