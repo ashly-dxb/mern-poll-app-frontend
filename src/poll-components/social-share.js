@@ -16,7 +16,7 @@ import {
 
 function SocialShare(props) {
   return (
-    <div className="d-flex flex-row flex-md-column">
+    <div className="d-flex flex-row flex-column">
       <TwitterShareButton
         url={props.url}
         title={JSON.stringify(props.question)}

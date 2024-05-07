@@ -180,11 +180,6 @@ function EditPoll({ location }) {
                   Edit below fields as you need.
                 </p>
               </div>
-              <Link to={"/poll-admin/?id=" + pollID + "&key=" + key}>
-                <span className="text-light text-decoration-none bg-danger align-self-end fw-bold rounded-lg px-4 py-2">
-                  Cancel
-                </span>
-              </Link>
             </div>
             <div className="mt-4">
               <div className="flex flex-column question">
@@ -246,7 +241,7 @@ function EditPoll({ location }) {
                 ]}
               >
                 <MuiAlert onClose={snackbarclose} severity="info">
-                  Option Field Added!
+                  Option field added!
                 </MuiAlert>
               </Snackbar>
 
@@ -309,11 +304,20 @@ function EditPoll({ location }) {
             <div className="flex justify-content-center mt-2 pt-1">
               <button
                 type="submit"
-                className="px-3 py-3 bg-success text-white fw-bold border-0 rounded-lg"
+                className="bg-success text-white fw-bold border-0 rounded-lg px-3 py-3"
               >
                 <FontAwesomeIcon className="me-2" icon={faBookmark} />
                 &nbsp; Save Poll
               </button>
+              &nbsp;&nbsp;
+              <Link
+                to={"/poll-admin/?id=" + pollID + "&key=" + key}
+                className="text-decoration-none"
+              >
+                <span className="bg-danger text-light fw-bold border-0 rounded-lg px-4 py-3">
+                  Cancel
+                </span>
+              </Link>
             </div>
           </div>
         </form>

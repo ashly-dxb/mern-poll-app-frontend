@@ -9,12 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Notification from "./notification";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faBolt,
-  faTrashAlt,
-  faSpider,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faBolt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";

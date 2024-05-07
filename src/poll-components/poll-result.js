@@ -219,7 +219,7 @@ function PollResult({ location }) {
                     <h3 className="fw-bold text-dark">{totalvotes}</h3>
                   </div>
 
-                  <div className="d-flex flex-row flex-md-column">
+                  <div className="d-flex flex-row flex-column">
                     <p className="fw-bold d-md-inline-block mt-2 mb-4 text-primary-secondary text-left">
                       Share
                     </p>
