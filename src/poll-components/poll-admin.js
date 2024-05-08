@@ -77,7 +77,7 @@ function PollAdmin({ location }) {
       .then(function (response) {
         const data = response.data;
         setQuestion(data.question);
-        console.log("Setting from getpoll", data.question);
+        console.log("Setting from GET poll", data.question);
 
         let medium = [];
         data.options.map((option) => {
@@ -199,20 +199,22 @@ function PollAdmin({ location }) {
   return (
     <div className="flex-container m-3">
       <div className="ui-container py-5 px-2">
-        <div className="d-flex flex-column  flex-md-row justify-content-between align-items-md-center">
-          <div className="d-flex flex-column mb-4 mb-md-0">
-            <h2 className="heading-2">Manage Poll</h2>
+        <div className="d-flex flex-row ">
+          <h2 className="heading-2">Manage Poll</h2>
+        </div>
+        <div className="d-flex flex-row ">
+          <div className="d-flex flex-column mb-4 me-4 mb-md-0 border">
             <p className="mt-4 mb-0 text-large text-secondary font-medium">
               Poll can be modified, if it has no votes!
             </p>
           </div>
 
-          <div className="d-flex align-items-center me-4 me-md-4 justify-content-around justify-content-md-center">
+          <div className="d-flex flex-column me-4 mb-md-0 border">
             {totalvotes === 0 ? (
               <a
                 aria-label="Edit Poll?"
                 href={"/edit-poll/?id=" + pollID + "&key=" + key}
-                className="text-dark outline-none rounded hover-shadow text-warning border-0 bg-transparent"
+                className="text-dark outline-none rounded hover-shadow text-warning border-0 bg-transparent p-3"
                 // style={{ fontSize: "1.5rem" }}
                 title="Modify"
                 style={{ border: "1px solid red" }}
@@ -220,11 +222,13 @@ function PollAdmin({ location }) {
                 <FontAwesomeIcon icon={faPencilAlt} />
               </a>
             ) : null}
+          </div>
 
+          <div className="d-flex flex-column me-4 mb-md-0 border">
             <button
-              aria-label={"Delete this Poll?"}
+              aria-label={"Delete Poll?"}
               role="alert"
-              className="text-dark outline-none rounded hover-shadow text-danger border-0 bg-transparent"
+              className="text-dark outline-none rounded hover-shadow text-danger border-0 bg-transparent p-3"
               // style={{ fontSize: "1.5rem" }}
               title="Delete"
               onClick={() => setShowDelete(true)}
@@ -332,7 +336,7 @@ function PollAdmin({ location }) {
                     <h3 className="fw-bold text-dark">{totalvotes}</h3>
                   </div>
 
-                  <div className="d-flex flex-row flex-md-column">
+                  <div className="d-flex flex-row flex-column">
                     <p className="fw-bold d-md-inline-block mt-2 mb-4 text-primary-secondary text-left">
                       Share
                     </p>
@@ -344,6 +348,7 @@ function PollAdmin({ location }) {
                       }}
                     >
                       <FontAwesomeIcon className="ms-3 me-3" icon={faQrcode} />
+                      &nbsp;
                       <span className="d-md-inline-block ">
                         Share via QRcode
                       </span>

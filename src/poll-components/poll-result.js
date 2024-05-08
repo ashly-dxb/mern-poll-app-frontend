@@ -225,7 +225,7 @@ function PollResult({ location }) {
                     </p>
 
                     <button
-                      className="bg-info fw-bold mb-4 px-0 py-2 rounded-lg text-center border-0 text-white me-3 "
+                      className="bg-warning fw-bold mb-4 px-0 py-2 rounded-lg text-center border-0 text-white me-3 "
                       onClick={() => {
                         setShowQR(true);
                       }}
