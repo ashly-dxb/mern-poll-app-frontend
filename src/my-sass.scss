@@ -1,14 +1,20 @@
-$myColor: red;
-$myColor2: yellow;
+$myColor: rgb(55, 31, 192);
+$myColor2: rgb(226, 226, 87);
+$myColor3: rgb(83, 136, 185);
 
-$labelColor: #ffccaa;
+$labelColor: #bb713f;
 
-h3 {
+.headerStrip {
   color: $myColor;
   background-color: $myColor2;
+  padding: 2px;
 }
 
-label{
+label {
   color: $labelColor;
   // background-color: $myColor2;
+}
+
+.inputContainer {
+  // background-color: $myColor3;
 }

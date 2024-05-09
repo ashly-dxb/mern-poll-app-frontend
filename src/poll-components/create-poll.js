@@ -142,24 +142,13 @@ function CreatePoll() {
     <div className="flex-container m-3">
       <div className="ui-container py-5 px-2">
         <form onSubmit={handleSubmit} autoComplete="off">
-          <div>
-            <div
-              className="d-flex justify-content-between flex-column flex-md-row align-items-baseline"
-              // style={{ border: "1px solid orange" }}
-            >
-              <div>
-                <h3>Create Poll</h3>
-                <p className="mt-4 mb-0 text-large text-secondary font-medium">
-                  Fill the below form to create a poll
-                </p>
-              </div>
+          <div className="col-md-6 p-2 border">
+            <div className="headerStrip">
+              <h3>Create Poll</h3>
             </div>
 
-            <div
-              className="mt-4"
-              // style={{ border: "1px solid blue" }}
-            >
-              <div className="d-flex flex-column ">
+            <div className="mt-4">
+              <div className="d-flex flex-column">
                 <label className="mb-3 fw-bold">Question</label>
                 <TextField
                   {...(showError(questions.question, questions.error) && {
@@ -188,44 +177,39 @@ function CreatePoll() {
               />
 
               {inputFields.map((inputField, index) => (
-                <div className="options mt-2 flex-column " key={inputField.id}>
-                  <div className=" mb-3">
-                    <div className="d-flex flex-column">
-                      <label className="mb-3 fw-bold">Option {index + 1}</label>
-                      <div className="">
-                        <TextField
-                          {...(showError(
-                            inputField.options,
-                            inputField.error
-                          ) && {
-                            ...{
-                              error: inputField.error,
-                              helperText: "Enter atleast 2 options",
-                            },
-                          })}
-                          id={inputField.id}
-                          name="options"
-                          className="px-3 py-3 rounded-lg inputfield focus-shadow  focus-outline-none  border border-grey"
-                          placeholder={"Option" + (index + 1)}
-                          value={inputField.options}
-                          onChange={(event) =>
-                            handleChangeInput(inputField.id, event)
-                          }
-                        />
+                <div className="mt-2 d-flex flex-column" key={inputField.id}>
+                  <label className="mb-3 fw-bold">Option {index + 1}</label>
 
-                        <button
-                          hidden={inputFields.length === 2}
-                          onClick={() => handleRemoveFields(inputField.id)}
-                          className=" delete border-0 mx-2"
-                          title="Delete"
-                        >
-                          <FontAwesomeIcon
-                            className=" text-danger"
-                            icon={faTrashAlt}
-                          />
-                        </button>
-                      </div>
-                    </div>
+                  <div className="inputContainer">
+                    <TextField
+                      {...(showError(inputField.options, inputField.error) && {
+                        ...{
+                          error: inputField.error,
+                          helperText: "Enter atleast 2 options",
+                        },
+                      })}
+                      fullWidth
+                      id={inputField.id}
+                      name="options"
+                      className="px-3 py-3 rounded-lg focus-shadow focus-outline-none border border-grey"
+                      placeholder={"Option" + (index + 1)}
+                      value={inputField.options}
+                      onChange={(event) =>
+                        handleChangeInput(inputField.id, event)
+                      }
+                    />
+
+                    <button
+                      hidden={inputFields.length === 2}
+                      onClick={() => handleRemoveFields(inputField.id)}
+                      className="delete border-0 mx-2"
+                      title="Delete"
+                    >
+                      <FontAwesomeIcon
+                        className="text-danger"
+                        icon={faTrashAlt}
+                      />
+                    </button>
                   </div>
                 </div>
               ))}
@@ -233,19 +217,16 @@ function CreatePoll() {
               <button
                 type="button"
                 onClick={handleAddfields}
-                className="px-2 py-2 bg-dark text-white"
+                className="px-2 py-2 mt-3 bg-dark text-white"
               >
                 <span className="me-3">
                   <FontAwesomeIcon className="mx-2" icon={faPlus} />
-                  Add option&nbsp;
+                  Add option
                 </span>
               </button>
             </div>
 
-            <div
-              className="mt-4 pt-3"
-              // style={{ border: "1px solid red" }}
-            >
+            <div className="mt-2 pt-2">
               <button
                 type="submit"
                 className="px-5 py-3 bg-success text-white fw-bold border-0 rounded-lg"
@@ -257,8 +238,6 @@ function CreatePoll() {
           </div>
         </form>
       </div>
-
-      <hr style={{ color: "red", height: "5px" }} />
     </div>
   );
 }

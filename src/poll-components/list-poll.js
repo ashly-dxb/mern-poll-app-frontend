@@ -36,6 +36,7 @@ function ListPoll() {
       .get(baseURL + "/polls/listpoll")
       .then(function (response) {
         console.log(response.data);
+
         setPolls(response.data);
 
         setIsLoading(false);
@@ -113,106 +114,102 @@ function ListPoll() {
   return (
     <div className="flex-container m-3">
       <div className="ui-container py-5 px-2">
-        <div className="xxx">
-          <div className="">
-            <div className="clearfix w-100 border-0 border-black">
-              <div className="float-start">
-                <h3>Polls List</h3>
+        <div className="clearfix w-100 border-0 border-black headerStrip">
+          <div className="float-start">
+            <h3>Polls List</h3>
+          </div>
+          <div className="float-end">
+            <Link
+              className="rounded-lg shadow-lg me-3"
+              onClick={() => loadList()}
+            >
+              <FontAwesomeIcon
+                icon={isLoading ? faSpinner : faRefresh}
+                className="fa-2x spinner"
+                alt="Refresh"
+                title="Refresh"
+              />
+            </Link>
+          </div>
+        </div>
+
+        <div className="d-flex flex-md-row w-100 py-3 fw-bold">
+          <div className="flex-column col-4 text-wrap">Poll Question</div>
+          <div className="flex-column col-2">Created Date</div>
+          <div className="flex-column col-1 mx-5 text-end">Votes</div>
+          <div className="flex-column col-1"></div>
+          <div className="flex-column col-1"></div>
+          <div className="flex-column col-1"></div>
+          <div className="flex-column col-1"></div>
+        </div>
+
+        {polls.map((poll, index) => {
+          return (
+            <div
+              className="rowStriped d-flex flex-md-row w-100 py-1 my-2 align-items-center border border-secondary rounded"
+              key={index}
+            >
+              {/* <div className="flex-column col-4">{poll.pollID}</div> */}
+              <div className="flex-column col-4 fs-6">{poll.question}</div>
+              <div className="flex-column col-2 fs-6">{poll.createdDate}</div>
+              <div className="flex-column col-1 fs-6 mx-5 text-end">
+                {poll.totalVotes}
               </div>
-              <div className="float-end">
-                <Link
-                  className="rounded-lg shadow-lg me-3"
-                  onClick={() => loadList()}
+
+              <div className="flex-column col-1">
+                <a
+                  aria-label="Do Vote?"
+                  href={"/poll-vote/?id=" + poll.pollID}
+                  className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
+                  style={{ fontSize: "1.5rem" }}
+                  title="Do Vote"
                 >
-                  <FontAwesomeIcon
-                    icon={isLoading ? faSpinner : faRefresh}
-                    className="fa-2x spinner"
-                    alt="Refresh"
-                    title="Refresh"
-                  />
-                </Link>
+                  <FontAwesomeIcon icon={faUser} />
+                </a>
+              </div>
+
+              <div className="flex-column col-1">
+                <a
+                  aria-label="Edit Poll?"
+                  href={"/edit-poll/?id=" + poll.pollID + "&key=" + poll._id}
+                  className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
+                  style={{ fontSize: "1.5rem" }}
+                  title="Edit"
+                >
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </a>
+              </div>
+
+              <div className="flex-column col-1">
+                <button
+                  aria-label={"Delete Poll?"}
+                  href={"/edit-poll/?id=" + poll.pollID + "&key=" + poll._id}
+                  className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
+                  style={{ fontSize: "1.5rem" }}
+                  title="Delete"
+                  onClick={() => {
+                    setShowDelete(true);
+                    setKey(poll._id);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </button>
+              </div>
+
+              <div className="flex-column col-1">
+                <a
+                  aria-label="View Results?"
+                  href={"/poll-result/?id=" + poll.pollID}
+                  className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
+                  style={{ fontSize: "1.5rem" }}
+                  title="View Results"
+                >
+                  <FontAwesomeIcon icon={faBook} />
+                </a>
               </div>
             </div>
-          </div>
-
-          <div className="d-flex flex-md-row w-100 py-3 fw-bold">
-            <div className="flex-column col-4 text-wrap">Poll Question</div>
-            <div className="flex-column col-2">Created Date</div>
-            <div className="flex-column col-1 mx-5 text-end">Votes</div>
-            <div className="flex-column col-1"></div>
-            <div className="flex-column col-1"></div>
-            <div className="flex-column col-1"></div>
-            <div className="flex-column col-1"></div>
-          </div>
-
-          {polls.map((poll, index) => {
-            return (
-              <div
-                className="rowStriped d-flex flex-md-row w-100 py-1 my-2 align-items-center border border-secondary rounded"
-                key={index}
-              >
-                {/* <div className="flex-column col-4">{poll.pollID}</div> */}
-                <div className="flex-column col-4 fs-6">{poll.question}</div>
-                <div className="flex-column col-2 fs-6">{poll.createdDate}</div>
-                <div className="flex-column col-1 fs-6 mx-5 text-end">
-                  {poll.totalVotes}
-                </div>
-
-                <div className="flex-column col-1">
-                  <a
-                    aria-label="Do Vote?"
-                    href={"/poll-vote/?id=" + poll.pollID}
-                    className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
-                    style={{ fontSize: "1.5rem" }}
-                    title="Do Vote"
-                  >
-                    <FontAwesomeIcon icon={faUser} />
-                  </a>
-                </div>
-
-                <div className="flex-column col-1">
-                  <a
-                    aria-label="Edit Poll?"
-                    href={"/edit-poll/?id=" + poll.pollID + "&key=" + poll._id}
-                    className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
-                    style={{ fontSize: "1.5rem" }}
-                    title="Edit"
-                  >
-                    <FontAwesomeIcon icon={faPencilAlt} />
-                  </a>
-                </div>
-
-                <div className="flex-column col-1">
-                  <button
-                    aria-label={"Delete Poll?"}
-                    href={"/edit-poll/?id=" + poll.pollID + "&key=" + poll._id}
-                    className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
-                    style={{ fontSize: "1.5rem" }}
-                    title="Delete"
-                    onClick={() => {
-                      setShowDelete(true);
-                      setKey(poll._id);
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                  </button>
-                </div>
-
-                <div className="flex-column col-1">
-                  <a
-                    aria-label="View Results?"
-                    href={"/poll-result/?id=" + poll.pollID}
-                    className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
-                    style={{ fontSize: "1.5rem" }}
-                    title="View Results"
-                  >
-                    <FontAwesomeIcon icon={faBook} />
-                  </a>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+          );
+        })}
       </div>
 
       {showDelete ? <ShowDelete /> : null}

@@ -23,7 +23,7 @@ function ChangePassword() {
       {error}
     </div>
   ) : (
-    ""
+    "xxx"
   );
 
   axios.defaults.withCredentials = true;
@@ -69,11 +69,9 @@ function ChangePassword() {
   return auth ? (
     <div className="flex-container m-3">
       <div className="ui-container py-5 px-2">
-        <div className="col-md-3 p-2">
-          <div className="d-flex justify-content-between flex-column flex-md-row align-items-baseline">
-            <div>
-              <h3>Change Password</h3>
-            </div>
+        <div className="col-md-3 p-2 border">
+          <div className="headerStrip">
+            <h3>Change Password</h3>
           </div>
 
           <form onSubmit={handleSubmit}>
