@@ -23,7 +23,7 @@ function ChangePassword() {
       {error}
     </div>
   ) : (
-    "xxx"
+    "-"
   );
 
   axios.defaults.withCredentials = true;
@@ -45,9 +45,7 @@ function ChangePassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setError(null);
-
     axios
       .post(baseURL + "/users/change-password", {
         currentPassword,
@@ -59,7 +57,7 @@ function ChangePassword() {
           console.log("Change pass:", result);
           navigate("/home");
         } else {
-          console.log("ERROR ####", result.data.errorMsg);
+          console.log("#### ERROR ####", result.data.errorMsg);
           setError(result.data.errorMsg);
         }
       })
@@ -81,7 +79,7 @@ function ChangePassword() {
                 type="password"
                 name="currentPassword"
                 id="currentPassword"
-                //   placeholder="Current Password"
+                placeholder="Enter Current Password"
                 autoComplete="off"
                 className="form-control rounded-0"
                 onChange={(e) => setCurrentPassword(e.target.value)}
@@ -95,7 +93,7 @@ function ChangePassword() {
                 type="password"
                 name="NewPassword"
                 id="NewPassword"
-                //   placeholder="New Password"
+                placeholder="Enter New Password"
                 autoComplete="off"
                 className="form-control rounded-0"
                 onChange={(e) => setNewPassword(e.target.value)}
@@ -109,7 +107,7 @@ function ChangePassword() {
                 type="password"
                 name="ConfirmPassword"
                 id="ConfirmPassword"
-                //   placeholder="Confirm Password"
+                placeholder="Re-enter New Password"
                 autoComplete="off"
                 className="form-control rounded-0"
                 onChange={(e) => setConfirmPassword(e.target.value)}
