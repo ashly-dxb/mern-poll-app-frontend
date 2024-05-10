@@ -33,7 +33,7 @@ function ChangePassword() {
       .get(baseURL + "/users/checkauth")
       .then((result) => {
         if (result.data.valid) {
-          console.log("Auth Valid");
+          console.log("Auth is valid in ChangePass page");
           setAuth(true);
         } else {
           setAuth(false);

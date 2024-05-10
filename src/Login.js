@@ -34,17 +34,17 @@ function Login() {
   useEffect(() => {
     sessionStorage.setItem("apiPathURL", "http://localhost:8080/api");
 
-    // axios
-    //   .get(baseURL + "/users/checkauth")
-    //   .then((result) => {
-    //     if (result.data.valid) {
-    //       console.log("valid:  success");
-    //       navigate("/home");
-    //     } else {
-    //       navigate("/login");
-    //     }
-    //   })
-    //   .catch((err) => console.log(err));
+    axios
+      .get(baseURL + "/users/checkauth")
+      .then((result) => {
+        if (result.data.valid) {
+          console.log("Auth is valid in Login page");
+          navigate("/home");
+        } else {
+          navigate("/login");
+        }
+      })
+      .catch((err) => console.log(err));
   }, [navigate]);
 
   const handleLoginClick = (e) => {

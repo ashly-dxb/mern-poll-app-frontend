@@ -21,7 +21,7 @@ function Settings() {
       .get(baseURL + "/users/checkauth")
       .then((result) => {
         if (result.data.valid) {
-          console.log("Auth is valid in settings");
+          console.log("Auth is valid in Settings page");
           setName(result.data.name);
           setAuth(true);
         } else {
