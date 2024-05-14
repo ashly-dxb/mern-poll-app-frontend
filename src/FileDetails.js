@@ -21,28 +21,26 @@ function FileDetails() {
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
-  useEffect(() => {
-    axios
-      .get(baseURL + "/users/checkauth")
-      .then((result) => {
-        if (result.data.valid) {
-          console.log("Auth is valid in FileDetails page");
-          setAuth(true);
-        } else {
-          setAuth(false);
-          navigate("/login");
-        }
-      })
-      .catch((err) => console.log(err));
-  }, [navigate]);
+  // useEffect(() => {
+  //   axios
+  //     .get(baseURL + "/users/checkauth")
+  //     .then((result) => {
+  //       if (result.data.valid) {
+  //         console.log("Auth is valid in FileDetails page");
+  //         setAuth(true);
+  //       } else {
+  //         setAuth(false);
+  //         navigate("/login");
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [navigate]);
 
   useEffect(() => {
     const fileID = new URLSearchParams(window.location.search).get("id");
-    // console.log("fileID::::", fileID);
     axios
       .get(baseURL + `/files/details/${fileID}`)
       .then(function (response) {
-        console.log(response);
         setFileDetails(response.data);
       })
       .catch(function (error) {
@@ -95,7 +93,7 @@ function FileDetails() {
       });
   };
 
-  return auth ? (
+  return (
     <div className="flex-container m-3">
       <div className="ui-container py-5 px-2">
         <div className="col-md-8 p-2 border">
@@ -148,22 +146,22 @@ function FileDetails() {
             </div>
           </div>
 
-          <button
+          {/* <button
             className="px-2 py-2 my-2 bg-primary border-0 text-white"
             onClick={() => previewFile(fileDetails.filename)}
           >
             Preview
-          </button>
+          </button> */}
 
           <div className="row">
-            <iframe
+            {/* <iframe
               width="400"
               height="400"
               frameBorder="0"
               src={`https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(
                 previewURL
               )}`}
-            ></iframe>
+            ></iframe> */}
 
             {/* <object
               data={previewURL}
@@ -173,12 +171,6 @@ function FileDetails() {
             ></object> */}
           </div>
         </div>
-      </div>
-    </div>
-  ) : (
-    <div className="flex-container m-3">
-      <div className="ui-container py-5 px-2">
-        <div>Not Authorised</div>
       </div>
     </div>
   );
