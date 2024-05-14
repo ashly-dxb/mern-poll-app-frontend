@@ -2,8 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import baseURL from "./components/Config";
 import axios from "axios";
+
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ThemeContext } from "./ThemeContext";
+// import { ThemeContext } from "./ThemeContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,9 +19,9 @@ import {
 import moment from "moment";
 
 function FileUpload() {
-  const { user, setUser } = useContext(ThemeContext); //dark theme
+  // const { user, setUser } = useContext(ThemeContext); //dark theme
 
-  const [auth, setAuth] = useState(false);
+  // const [auth, setAuth] = useState(false);
   const [errors, setErrors] = useState({});
 
   //   const [images, setImages] = useState([]);
@@ -39,24 +40,27 @@ function FileUpload() {
   };
 
   const navigate = useNavigate();
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
+
+  // useEffect(() => {
+  //   axios
+  //     .get(baseURL + "/users/checkauth")
+  //     .then((result) => {
+  //       if (result.data.valid) {
+  //         console.log("Auth is valid in upload page");
+  //         setAuth(true);
+  //       } else {
+  //         setAuth(false);
+  //         navigate("/login");
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+
+  // }, [navigate]);
 
   useEffect(() => {
-    axios
-      .get(baseURL + "/users/checkauth")
-      .then((result) => {
-        if (result.data.valid) {
-          console.log("Auth is valid in upload page");
-          setAuth(true);
-        } else {
-          setAuth(false);
-          navigate("/login");
-        }
-      })
-      .catch((err) => console.log(err));
-
     loadList();
-  }, [navigate]);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -75,6 +79,11 @@ function FileUpload() {
       errorFound = true;
     }
 
+    if (description.length < 5) {
+      setErrors({ description: "Minimum 5 characters required" });
+      errorFound = true;
+    }
+
     if (description.length > 0) {
       formData.append("description", description);
     } else {
@@ -82,13 +91,7 @@ function FileUpload() {
       errorFound = true;
     }
 
-    if (description.length < 5) {
-      setErrors({ description: "Minimum 5 characters required" });
-      errorFound = true;
-    }
-
     if (errorFound) return false;
-
     setUploading(true); // only set it here after all validations
 
     axios
@@ -188,7 +191,7 @@ function FileUpload() {
     localStorage.setItem("deletepoll", 0);
   };
 
-  return auth ? (
+  return (
     <div className="flex-container m-3">
       <div className="ui-container py-5 px-2">
         <div className="row">
@@ -327,12 +330,6 @@ function FileUpload() {
       </div>
 
       {showDelete ? <ShowDeleteDialog /> : null}
-    </div>
-  ) : (
-    <div className="flex-container m-3">
-      <div className="ui-container py-5 px-2">
-        <div>Not Authorised</div>
-      </div>
     </div>
   );
 }
