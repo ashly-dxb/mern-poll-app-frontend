@@ -22,7 +22,6 @@ function ListPoll() {
   const [polls, setPolls] = useState([]);
   const [key, setKey] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
   const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
@@ -35,15 +34,10 @@ function ListPoll() {
     axios
       .get(baseURL + "/polls/listpoll")
       .then(function (response) {
-        console.log(response.data);
-
         setPolls(response.data);
-
         setIsLoading(false);
       })
       .catch(function (error) {
-        console.log(error);
-
         setIsLoading(false);
       });
   };
@@ -88,16 +82,11 @@ function ListPoll() {
   );
 
   const deletePoll = () => {
-    // localStorage.removeItem(
-    //   question.toLowerCase().trim().slice(0, 2) + pollID.slice(0, 4)
-    // );
-
     setShowDelete(false);
 
     axios
       .post(baseURL + "/polls/deletepoll", { key: key })
       .then((response) => {
-        console.log("Delete poll:", response);
         if (response.data.success) {
           loadList();
         } else {
@@ -134,7 +123,7 @@ function ListPoll() {
         </div>
 
         <div className="d-flex flex-md-row w-100 py-3 fw-bold">
-          <div className="flex-column col-4 text-wrap">Poll Question</div>
+          <div className="flex-column col-4 text-wrap">Question</div>
           <div className="flex-column col-2">Created Date</div>
           <div className="flex-column col-1 mx-5 text-end">Votes</div>
           <div className="flex-column col-1"></div>
@@ -146,47 +135,43 @@ function ListPoll() {
         {polls.map((poll, index) => {
           return (
             <div
-              className="rowStriped d-flex flex-md-row w-100 py-1 my-2 align-items-center border border-secondary rounded"
+              className="rowStriped d-flex flex-md-row w-100 my-2 align-items-center border border-secondary"
               key={index}
             >
               {/* <div className="flex-column col-4">{poll.pollID}</div> */}
-              <div className="flex-column col-4 fs-6">{poll.question}</div>
-              <div className="flex-column col-2 fs-6">{poll.createdDate}</div>
-              <div className="flex-column col-1 fs-6 mx-5 text-end">
+              <div className="flex-column col-4 xxxx">{poll.question}</div>
+              <div className="flex-column col-2 xxxx">{poll.createdDate}</div>
+              <div className="flex-column col-1 xxxx mx-5 text-end">
                 {poll.totalVotes}
               </div>
 
               <div className="flex-column col-1">
-                <a
-                  aria-label="Do Vote?"
-                  href={"/poll-vote/?id=" + poll.pollID}
+                <Link
+                  to={"/poll-vote/?id=" + poll.pollID}
                   className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
-                  style={{ fontSize: "1.5rem" }}
                   title="Do Vote"
+                  aria-label="Do Vote?"
                 >
                   <FontAwesomeIcon icon={faUser} />
-                </a>
+                </Link>
               </div>
 
               <div className="flex-column col-1">
-                <a
-                  aria-label="Edit Poll?"
-                  href={"/edit-poll/?id=" + poll.pollID + "&key=" + poll._id}
+                <Link
+                  to={"/edit-poll/?id=" + poll.pollID + "&key=" + poll._id}
                   className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
-                  style={{ fontSize: "1.5rem" }}
                   title="Edit"
+                  aria-label="Edit Poll"
                 >
                   <FontAwesomeIcon icon={faPencilAlt} />
-                </a>
+                </Link>
               </div>
 
               <div className="flex-column col-1">
                 <button
-                  aria-label={"Delete Poll?"}
-                  href={"/edit-poll/?id=" + poll.pollID + "&key=" + poll._id}
                   className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
-                  style={{ fontSize: "1.5rem" }}
                   title="Delete"
+                  aria-label={"Delete Poll?"}
                   onClick={() => {
                     setShowDelete(true);
                     setKey(poll._id);
@@ -197,15 +182,14 @@ function ListPoll() {
               </div>
 
               <div className="flex-column col-1">
-                <a
-                  aria-label="View Results?"
-                  href={"/poll-result/?id=" + poll.pollID}
+                <Link
+                  to={"/poll-result/?id=" + poll.pollID}
                   className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
-                  style={{ fontSize: "1.5rem" }}
                   title="View Results"
+                  aria-label="View Results?"
                 >
                   <FontAwesomeIcon icon={faBook} />
-                </a>
+                </Link>
               </div>
             </div>
           );

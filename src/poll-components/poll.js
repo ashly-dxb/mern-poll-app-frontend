@@ -42,10 +42,7 @@ function Poll({ location }) {
 
   useEffect(() => {
     const id = new URLSearchParams(window.location.search).get("id");
-    console.log("ID from URL: ", id);
-
     setPollID(id);
-
     axios
       .get(baseURL + `/polls/getpoll/${id}`)
       .then(function (response) {
@@ -57,8 +54,6 @@ function Poll({ location }) {
           medium.push(option);
           return medium;
         });
-
-        console.log("medium:", medium);
 
         setOptions(medium);
       })
@@ -76,8 +71,6 @@ function Poll({ location }) {
     };
 
     setResponse(response);
-    console.log("settingResponse", response);
-
     setVerifier({ id: pollID, selected: option.options, show: 0 });
   }
 

@@ -132,30 +132,6 @@ function Navbar() {
                     Test API
                   </Link>
                 </li>
-
-                {/* <li className="nav-item">
-                  <Link className={currentRoute.endsWith("xxxx") ? "nav-link active" : "nav-link"} to="/new-poll-details/?id=XXX">
-                    Poll Details
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link className={currentRoute.endsWith("xxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-vote/?id=XXX">
-                    Poll
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link className={currentRoute.endsWith("xxxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-result/?id=XXX">
-                    Poll Result
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link className={currentRoute.endsWith("xxxxxxxxxxx") ? "nav-link active" : "nav-link"} to="/poll-admin/?id=XXX&key=YYY">
-                    Poll Admin
-                  </Link>
-                </li> */}
               </>
             ) : (
               ""
@@ -182,7 +158,7 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     className={
-                      currentRoute.endsWith("tasks")
+                      currentRoute.endsWith("/tasks")
                         ? "nav-link active"
                         : "nav-link"
                     }
@@ -190,6 +166,20 @@ function Navbar() {
                     onClick={handleLinkClick}
                   >
                     Tasks
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link
+                    className={
+                      currentRoute.endsWith("/file-upload")
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                    to="/file-upload"
+                    onClick={handleLinkClick}
+                  >
+                    Files
                   </Link>
                 </li>
 
