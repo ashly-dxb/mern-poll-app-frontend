@@ -135,19 +135,18 @@ function FileUpload() {
 
   const ShowDeleteDialog = () => (
     <div
-      className="w-100 justify-content-center d-flex align-items-center position-fixed fixed-top"
+      className="d-flex w-100 justify-content-center align-items-center position-fixed fixed-top border"
       style={{
         height: "100%",
         zIndex: 1,
         backgroundColor: "rgba(135,206,235,0.7)",
       }}
     >
-      <div
-        className="d-flex flex-column align-items-center bg-white rounded-lg"
-        style={{ width: "30%" }}
-      >
-        <div className="d-flex flex-column w-100 px-4 pt-4">
+      <div className="d-flex flex-column align-items-center bg-white rounded-lg">
+        <div className="d-flex flex-column w-100 px-4 py-2 border bg-black text-white border-red">
           <h5>Delete File</h5>
+        </div>
+        <div className="d-flex flex-column w-100 px-4 pt-4">
           <span className="text-secondary">
             Are you sure you want to delete the file?
           </span>
@@ -261,11 +260,19 @@ function FileUpload() {
 
           <div className="col-md-9">
             <div className="d-flex flex-md-row w-100 py-3 fw-bold">
-              <div className="flex-column col-2">Filename</div>
-              <div className="flex-column col-3">Original Name</div>
-              <div className="flex-column col-3">Description</div>
-              <div className="flex-column col-2">Upload Date</div>
-              <div className="flex-column col-2">
+              <div className="flex-column col-md-2 col-sm-1 col-1 d-none d-lg-block">
+                Filename
+              </div>
+              <div className="flex-column col-md-2 col-sm-3 col-5">
+                Original Name
+              </div>
+              <div className="flex-column col-md-2 col-sm-1 col-1 d-none d-lg-block">
+                Description
+              </div>
+              <div className="flex-column col-md-2 col-sm-3 col-4">
+                Upload Date
+              </div>
+              <div className="flex-column col-md-2 col-sm-2 col-3">
                 <FontAwesomeIcon
                   icon={isLoading ? faSpinner : faRefresh}
                   className="fa spinner flex-column"
@@ -283,13 +290,19 @@ function FileUpload() {
                   className="rowStriped d-flex flex-md-row my-1 align-items-center rounded"
                   key={index}
                 >
-                  <div className="flex-column col-2 ">{file.filename}</div>
-                  <div className="flex-column col-3 ">{file.originalname}</div>
-                  <div className="flex-column col-3 ">{file.description}</div>
-                  <div className="flex-column col-2 ">
+                  <div className="flex-column col-md-2 col-sm-1 col-1 d-none d-lg-block">
+                    {file.filename}
+                  </div>
+                  <div className="flex-column col-md-2 col-sm-3 col-5">
+                    {file.originalname}
+                  </div>
+                  <div className="flex-column col-md-2 col-sm-1 col-1 d-none d-lg-block">
+                    {file.description}
+                  </div>
+                  <div className="flex-column col-md-2 col-sm-3 col-4">
                     {moment(file.uploadedDate).format("YYYY-MM-DD HH:MM")}
                   </div>
-                  <div className="flex-column col-2">
+                  <div className="flex-column col-md-2 col-sm-2 col-3">
                     <Link
                       className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
                       aria-label="Edit File"

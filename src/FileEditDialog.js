@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
 import baseURL from "./components/Config";
 import axios from "axios";
 
@@ -23,7 +23,7 @@ function FileEditDialog({
     if (descriptionUpd.length > 0) {
       formData2.description = descriptionUpd;
     } else {
-      setErrors({ descriptionUpd: "Please enter Description" });
+      setErrors({ descriptionUpd: "Please enter description" });
       errorFound = true;
     }
 
@@ -32,11 +32,8 @@ function FileEditDialog({
     axios
       .patch(baseURL + "/files/modify/" + fileKey, formData2)
       .then((response) => {
-        // setShowEdit(false);
-
         if (response.data.success) {
           loadList();
-
           showEditDialog(false);
         } else {
           alert("Error while updating record");
@@ -49,17 +46,14 @@ function FileEditDialog({
 
   return (
     <div
-      className="w-100 justify-content-center d-flex align-items-center position-fixed fixed-top"
+      className="d-flex w-100 justify-content-center align-items-center position-fixed fixed-top"
       style={{
         height: "100%",
         zIndex: 1,
         backgroundColor: "rgba(135,206,235,0.7)",
       }}
     >
-      <div
-        className="d-flex flex-column align-items-center bg-white rounded-lg"
-        style={{ width: "27%" }}
-      >
+      <div className="d-flex flex-column align-items-center bg-white rounded-lg">
         <div className="d-flex flex-column w-100 px-4 py-2 border bg-black text-white border-red">
           <h5>Modify Description</h5>
         </div>
