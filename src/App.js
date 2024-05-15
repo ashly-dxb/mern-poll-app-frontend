@@ -54,7 +54,7 @@ function App() {
           setAuthenticated(result.data.valid);
         } else {
           // navigate("/login");
-          console.log("Auth NOT valid in APP component...");
+          console.log("Auth NOT valid in APP component");
         }
       })
       .catch((err) => console.log(err));

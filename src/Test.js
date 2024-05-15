@@ -9,13 +9,11 @@ function TestAPI() {
   axios.defaults.withCredentials = false;
 
   useEffect(() => {
-    console.log("Loading API");
+    console.log("Loading Laravel API");
     axios
       .get("http://localhost:8000/api/blogs/2")
       .then((result) => {
         if (result.data) {
-          // console.log(result.data.data);
-
           setData(result.data.data);
         } else {
           console.log("error");

@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function FileDetails() {
-  const [auth, setAuth] = useState(false);
+  // const [auth, setAuth] = useState(false);
 
   const [fileDetails, setFileDetails] = useState({});
   const [previewURL, setPreviewURL] = useState("");
@@ -96,7 +96,7 @@ function FileDetails() {
   return (
     <div className="flex-container m-3">
       <div className="ui-container py-5 px-2">
-        <div className="col-md-8 p-2 border">
+        <div className="col-12 col-sm-10 col-md-8 col-lg-6 p-2 border">
           <div className="headerStrip">
             <h3>File Details</h3>
           </div>
@@ -115,22 +115,22 @@ function FileDetails() {
 
           <div className="row mb-2 py-2">
             <div className="col-md-4">Filename</div>
-            <div className="col-md-8">{fileDetails.filename}</div>
+            <div className="col-md-8 fw-bold">{fileDetails.filename}</div>
           </div>
 
           <div className="row mb-2 py-2">
             <div className="col-md-4">Original name</div>
-            <div className="col-md-8">{fileDetails.originalname}</div>
+            <div className="col-md-8 fw-bold">{fileDetails.originalname}</div>
           </div>
 
           <div className="row mb-2 py-2">
             <div className="col-md-4">Description</div>
-            <div className="col-md-8">{fileDetails.description}</div>
+            <div className="col-md-8 fw-bold">{fileDetails.description}</div>
           </div>
 
           <div className="row mb-2 py-2">
             <div className="col-md-4">Upload date</div>
-            <div className="col-md-8">{fileDetails.uploadedDate}</div>
+            <div className="col-md-8 fw-bold">{fileDetails.uploadedDate}</div>
           </div>
 
           <div className="row">

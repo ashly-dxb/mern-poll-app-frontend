@@ -300,7 +300,7 @@ function FileUpload() {
                     {file.description}
                   </div>
                   <div className="flex-column col-md-2 col-sm-3 col-4">
-                    {moment(file.uploadedDate).format("YYYY-MM-DD HH:MM")}
+                    {moment(file.uploadedDate).format("YYYY-MM-DD HH:mm")}
                   </div>
                   <div className="flex-column col-md-2 col-sm-2 col-3">
                     <Link
