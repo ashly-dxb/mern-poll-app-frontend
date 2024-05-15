@@ -1,6 +1,4 @@
 import React from "react";
-// import { Component } from "react";
-
 import Tasks from "./Tasks";
 import TodoList from "./TodoList";
 
@@ -14,7 +12,6 @@ import refreshImage from "./images/refresh.svg";
 
 class TaskMain extends Tasks {
   state = {
-    // tasks: [],
     currentTask: "",
     idEdit: "",
     editDesc: "",

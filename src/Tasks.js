@@ -15,13 +15,11 @@ class Tasks extends Component {
 
   handleAddTask = async (e) => {
     e.preventDefault();
-    // const originalTasks = this.state.tasks;
 
     try {
       await addTask({ task_name: this.state.currentTask });
 
       this.setState({
-        // tasks,
         currentTask: "",
         refresh: !this.state.refresh,
       });
@@ -36,7 +34,7 @@ class Tasks extends Component {
         refresh: !this.state.refresh,
       },
       () => {
-        console.log("REFRESH VAL:", this.state.refresh);
+        console.log("Refresh:", this.state.refresh);
       }
     );
   };

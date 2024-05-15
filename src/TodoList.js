@@ -22,8 +22,8 @@ class TodoList extends Component {
   };
 
   async componentDidMount() {
-    console.log("child prop REFRESH VAL: ", this.props.refresh);
-    console.log("child state REFRESH VAL: ", this.state.refresh);
+    // console.log("child prop REFRESH VAL: ", this.props.refresh);
+    // console.log("child state REFRESH VAL: ", this.state.refresh);
 
     this.loadTasks();
   }
@@ -31,8 +31,6 @@ class TodoList extends Component {
   loadTasks = async () => {
     try {
       const { data } = await getTasks();
-      console.log("TASKS", data);
-
       this.setState({ tasks: data });
     } catch (error) {
       console.log(error);
@@ -40,11 +38,7 @@ class TodoList extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    console.log(
-      "In getDerivedStateFromProps: props, state::",
-      props.refresh,
-      state.refresh
-    );
+    // console.log("getDerivedStateFromProps: props, state::",  props.refresh,  state.refresh);
 
     if (props.refresh !== state.refresh) {
       return {
@@ -98,8 +92,6 @@ class TodoList extends Component {
       await updateTaskDesc(currentTask, {
         task_name: tasks[index].task_name,
       });
-
-      // console.log("NEW state 2:::", this.state.tasks);
     } catch (error) {
       this.setState({ tasks: originalTasks });
       console.log(error);

@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import baseURL from "./components/Config";
 import axios from "axios";
+import FileEditDialog from "./FileEditDialog";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { ThemeContext } from "./ThemeContext";
@@ -19,12 +20,8 @@ import {
 import moment from "moment";
 
 function FileUpload() {
-  // const { user, setUser } = useContext(ThemeContext); //dark theme
-
-  // const [auth, setAuth] = useState(false);
   const [errors, setErrors] = useState({});
 
-  //   const [images, setImages] = useState([]);
   const [uploadFiles, setUploadFiles] = useState([]);
   const [description, setDescription] = useState("");
 
@@ -33,13 +30,16 @@ function FileUpload() {
   const [fileList, setFileList] = useState([]);
 
   const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+
   const [key, setKey] = useState(null);
+  const [descriptionVal, setDescriptionVal] = useState("");
 
   const changeFiles = (e) => {
     setUploadFiles(e.target.files);
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // axios.defaults.withCredentials = true;
 
   // useEffect(() => {
@@ -146,13 +146,13 @@ function FileUpload() {
         className="d-flex flex-column align-items-center bg-white rounded-lg"
         style={{ width: "30%" }}
       >
-        <div className="w-100 d-flex flex-column px-4 pt-4">
+        <div className="d-flex flex-column w-100 px-4 pt-4">
           <h5>Delete File</h5>
           <span className="text-secondary">
             Are you sure you want to delete the file?
           </span>
 
-          <div className="px-3 py-3 d-flex justify-content-end">
+          <div className="d-flex justify-content-end px-3 py-3">
             <button
               className="border-light rounded-lg shadow-lg px-4 py-2 me-3"
               onClick={() => setShowDelete(false)}
@@ -161,7 +161,7 @@ function FileUpload() {
             </button>
             &nbsp;
             <button
-              className="bg-danger border-light rounded-lg shadow-lg text-light px-4 py-2 ms-3"
+              className="border-light rounded-lg shadow-lg bg-danger text-light px-4 py-2 ms-3"
               onClick={deleteFile}
             >
               Delete
@@ -176,19 +176,17 @@ function FileUpload() {
     setShowDelete(false);
 
     axios
-      .post(baseURL + "/files/delete", { key: key })
+      .delete(baseURL + "/files/delete/" + key)
       .then((response) => {
         if (response.data.success) {
           loadList();
         } else {
-          alert("Some error occured while deleting record");
+          alert("Error occured while deleting record");
         }
       })
       .catch((err) => {
         console.log(err);
       });
-
-    localStorage.setItem("deletepoll", 0);
   };
 
   return (
@@ -293,17 +291,21 @@ function FileUpload() {
                   </div>
                   <div className="flex-column col-2">
                     <Link
-                      to={"/edit-file/?id=" + file._id}
                       className="p-2 outline-none rounded hover-shadow border-0 bg-transparent"
                       aria-label="Edit File"
                       title="Edit"
+                      onClick={() => {
+                        setShowEdit(true);
+                        setKey(file._id);
+                        setDescriptionVal(file.description);
+                      }}
                     >
                       <FontAwesomeIcon icon={faPencilAlt} />
                     </Link>
+
                     <button
-                      href={"/delete-file/?key=" + file._id}
                       className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
-                      aria-label={"Delete File"}
+                      aria-label="Delete File"
                       title="Delete"
                       onClick={() => {
                         setShowDelete(true);
@@ -330,6 +332,14 @@ function FileUpload() {
       </div>
 
       {showDelete ? <ShowDeleteDialog /> : null}
+      {showEdit ? (
+        <FileEditDialog
+          fileKey={key}
+          showEditDialog={setShowEdit}
+          loadList={loadList}
+          initialDescription={descriptionVal}
+        />
+      ) : null}
     </div>
   );
 }
