@@ -43,8 +43,9 @@ function Poll({ location }) {
   useEffect(() => {
     const id = new URLSearchParams(window.location.search).get("id");
     setPollID(id);
+
     axios
-      .get(baseURL + `/polls/getpoll/${id}`)
+      .get(baseURL + `/polls/details/${id}`)
       .then(function (response) {
         const data = response.data;
         setQuestion(data.question);

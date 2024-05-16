@@ -53,10 +53,10 @@ function EditPoll({ location }) {
     setKey(key);
 
     axios
-      .get(baseURL + `/polls/getpoll/${id}`)
+      .get(baseURL + `/polls/details/${id}`)
       .then(function (response) {
         const data = response.data;
-        console.log("getpoll resp:", data);
+        // console.log("details resp:", data);
         // console.log("question ===:", data.question);
 
         setQuestion({ question: data.question });
@@ -116,7 +116,7 @@ function EditPoll({ location }) {
       };
 
       axios
-        .post(baseURL + "/polls/editpoll", data)
+        .post(baseURL + "/polls/modify", data)
         .then(function (response) {
           console.log("Poll ID:", response.data._id);
         })

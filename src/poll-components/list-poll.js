@@ -32,7 +32,7 @@ function ListPoll() {
     setIsLoading(true);
 
     axios
-      .get(baseURL + "/polls/listpoll")
+      .get(baseURL + "/polls/list")
       .then(function (response) {
         setPolls(response.data);
         setIsLoading(false);
@@ -85,12 +85,12 @@ function ListPoll() {
     setShowDelete(false);
 
     axios
-      .post(baseURL + "/polls/deletepoll", { key: key })
+      .delete(baseURL + "/polls/delete/" + key)
       .then((response) => {
         if (response.data.success) {
           loadList();
         } else {
-          alert("Some error occured while deleting record");
+          alert("Error occured while deleting poll");
         }
       })
       .catch((err) => {

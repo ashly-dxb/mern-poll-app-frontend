@@ -79,7 +79,6 @@ function CreatePoll() {
         .post(baseURL + "/polls/createpoll", data)
         .then(function (response) {
           handleClick(slideTransition);
-          //   history.push(`/new-poll-details/?id=${questions.id}`);
           navigate(`/new-poll-details/?id=${questions.id}`);
         })
         .catch(function (error) {

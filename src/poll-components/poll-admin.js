@@ -73,7 +73,7 @@ function PollAdmin({ location }) {
     setKey(key);
 
     axios
-      .get(baseURL + `/polls/getpoll/${id}`)
+      .get(baseURL + `/polls/details/${id}`)
       .then(function (response) {
         const data = response.data;
         setQuestion(data.question);
@@ -97,10 +97,8 @@ function PollAdmin({ location }) {
       question.toLowerCase().trim().slice(0, 2) + pollID.slice(0, 4)
     );
 
-    const data = { key: key };
-
     axios
-      .post(baseURL + "/polls/deletepoll", data)
+      .delete(baseURL + "/polls/delete/" + key)
       .then((res) => {
         console.log("Delete poll:", res);
       })
@@ -109,8 +107,6 @@ function PollAdmin({ location }) {
       });
 
     localStorage.setItem("deletepoll", 0);
-
-    // history.push("/");
     navigate("/");
   };
 
